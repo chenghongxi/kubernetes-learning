@@ -4,11 +4,14 @@
 
 ## OLM
 ```text
-OLM 扩展了Kubernetes，提供了一种陈述式的方式来安装，管理和升级Operator，以及它在集群中所依赖的资源。
-它还对其管理的组件强制执行一些约束，以确保良好的用户体验。
-该项目使用户能够执行以下操作：
+OLM(Operator Lifecycle Manager) 作为 Operator Framework 的一部分，可以帮助用户进行 Operator 的自动安装，
+升级及其生命周期的管理。同时 OLM 自身也是以 Operator 的形式进行安装部署，可以说它的工作方式是以 Operators 来管理 Operators，
+而它面向 Operator 提供了声明式 (declarative) 的自动化管理能力也完全符合 Kubernetes 交互的设计理念。
 ```
-- `1. 将应用程序定义为封装了需求和元数据的一个Kubernetes资源`
-- `2. 使用依赖项解析方式自动地安装应用程序，或者使用kubectl/oc(OpenShift Client)手动安装应用程序`
-- `3. 使用不同的批准策略自动升级应用程序`
+
+### 组件:
+- `1. 生命周期管理：管理 operator 自身以及监控资源模型的升级和生命周期;`
+- `2. 服务发现：发现在集群中存在哪些 operator，这些 operators 管理了哪些资源模型以及又有哪些 operators 是可以被安装在集群中的;`
+- `3. 打包能力：提供一种标准模式用于 operator 以及依赖组件的分发，安装和升级`
+- `4. 交互能力：在完成了上述能力的标准化后，还需要提供一种规范化的方式（如 CLI）与集群中用户定义的其他云服务进行交互。`
 
