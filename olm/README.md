@@ -15,3 +15,4 @@ OLM(Operator Lifecycle Manager) 作为 Operator Framework 的一部分，可以�
 - `3. 打包能力：提供一种标准模式用于 operator 以及依赖组件的分发，安装和升级`
 - `4. 交互能力：在完成了上述能力的标准化后，还需要提供一种规范化的方式（如 CLI）与集群中用户定义的其他云服务进行交互。`
 
+![img.png](img/1.jpg)
