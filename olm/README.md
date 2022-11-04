@@ -18,5 +18,13 @@ OLM 由两个 Operator 构成：OLM Operator 和 Catalog Operator，其分别管
 ## 使用场景:
 OLM可以帮助用户，安装，更新，和管理所有Operator的生命周期
 
-### 安装:
-1. 
+### 安装(Kubernetes集群):
+
+- `git clone https://github.com/operator-framework/operator-lifecycle-manager.git`
+- `kubectl create -f deploy/upstream/quickstart/crds.yaml`
+- `kubectl create -f deploy/upstream/quickstart/olm.yaml`
+
+#### 验证:
+- `kubectl -n olm get deployments`
+#### 显示:
+![img.png]
