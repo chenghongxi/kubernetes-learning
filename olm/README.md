@@ -29,3 +29,14 @@ OLM可以帮助用户，安装，更新，和管理所有Operator的生命周期
 ![img](img/ns.png)
 - `kubectl -n olm get deployments`
 ![img](img/deploy.png)
+
+## Example
+
+
+### redis-operators
+
+#### Install:
+- `kubectl create -f https://operatorhub.io/install/redis-operator.yaml`
+![img](img/redis-operators.png)
+- `kubectl get csv -n operators`
+![img](img/csv.png)
