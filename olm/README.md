@@ -21,22 +21,31 @@ OLM 由两个 Operator 构成：OLM Operator 和 Catalog Operator，其分别管
 OLM可以帮助用户，安装，更新，和管理所有Operator的生命周期
 
 ### Install:
+```text
 - `curl -sL https://github.com/operator-framework/operator-lifecycle-manager/releases/download/v0.19.1/install.sh | bash -s v0.19.1`
+```
 ![img](img/install.png)
 
 #### Validation:
-- `kubectl get ns `
+```text
+kubectl get ns
+```
 ![img](img/ns.png)
-- `kubectl -n olm get deployments`
+```text
+kubectl -n olm get deployments
+```
 ![img](img/deploy.png)
 
 ## Example
 
-
 ### redis-operators
 
 #### Install:
-- `kubectl create -f https://operatorhub.io/install/redis-operator.yaml`
+```text
+kubectl create -f https://operatorhub.io/install/redis-operator.yaml
+```
 ![img](img/redis-operators.png)
-- `kubectl get csv -n operators`
+```text
+kubectl get csv -n operators
+```
 ![img](img/csv.png)
