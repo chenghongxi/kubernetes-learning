@@ -60,15 +60,39 @@ kubectl -n olm get deployments
 
 #### Install:
 
-[redis-operator.yaml](yml/redis-operator.yaml)
+
 ```text
-kubectl create -f https://operatorhub.io/install/redis-operator.yaml
+1. kubectl create -f https://operatorhub.io/install/redis-operator.yaml
 ```
 ![img](img/redis-operators.png)
-
-
+[redis-operator.yaml](yml/redis-operator.yaml)
 
 ```text
-kubectl get csv -n operators
+2. kubectl get csv -n operators
 ```
 ![img](img/csv.png)
+
+```text
+3. kubectl create -f ./storage-class.yml
+```
+![img](img/storage.png)
+![img](img/storage2.png)
+[storage-class.yml](yml/storage-class.yml)
+
+```text
+4. kubectl create -f redis-single.yml
+```
+![img](img/redis-po.png)
+[redis-single](yml/redis-single.yml)
+
+#### Validation
+```text
+1. kubectl exec -it redis-standalone-0 -- /bin/bash
+2. redis-cli -c
+3. set k1 v1
+4. get k1
+```
+![img](img/exec-redis.png)
+
+
+
