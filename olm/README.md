@@ -57,10 +57,15 @@ kubectl -n olm get deployments
 ### redis-operators
 
 #### Install:
+
+[redis-operator.yaml](yml/redis-operator.yaml)
 ```text
 kubectl create -f https://operatorhub.io/install/redis-operator.yaml
 ```
 ![img](img/redis-operators.png)
+
+
+
 ```text
 kubectl get csv -n operators
 ```
