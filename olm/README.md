@@ -8,6 +8,10 @@
 - `Kubernetes v1.11.3+ cluster`
 - `kubectl v1.11.3+`
 
+## Environment version
+1. Kubernetes Version: 
+2. 机器配置：4C，8G
+3. 集群安装方法: https://github.com/caoyingjunz/kubez-ansible
 ## 组件介绍:
 ```text
 OLM(Operator Lifecycle Manager) 作为 Operator Framework 的一部分，可以帮助用户进行 Operator 的自动安装，
