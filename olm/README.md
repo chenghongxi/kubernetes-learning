@@ -25,10 +25,18 @@ OLM 由两个 Operator 构成：OLM Operator 和 Catalog Operator，其分别管
 OLM可以帮助用户，安装，更新，和管理所有Operator的生命周期
 
 ### Install:
+- `Scripted`
 ```text
-- `curl -sL https://github.com/operator-framework/operator-lifecycle-manager/releases/download/v0.19.1/install.sh | bash -s v0.19.1`
+curl -sL https://github.com/operator-framework/operator-lifecycle-manager/releases/download/v0.19.1/install.sh | bash -s v0.19.1
 ```
 ![img](img/install.png)
+
+- `Operator-sdk`
+
+请查看官方快速开始文档
+```text
+https://olm.operatorframework.io/docs/getting-started/
+```
 
 #### Validation:
 ```text
