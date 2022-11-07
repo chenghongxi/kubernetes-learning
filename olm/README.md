@@ -4,6 +4,10 @@
 - `GitHub: https://github.com/operator-framework/operator-lifecycle-manager.git`
 - `community-operators-prod: https://github.com/redhat-openshift-ecosystem/community-operators-prod/tree/main/operators`
 
+## Prerequisites
+- `Kubernetes v1.11.3+ cluster`
+- `kubectl v1.11.3+`
+
 ## 组件介绍:
 ```text
 OLM(Operator Lifecycle Manager) 作为 Operator Framework 的一部分，可以帮助用户进行 Operator 的自动安装，
