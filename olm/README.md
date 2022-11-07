@@ -4,13 +4,13 @@
 - `GitHub: https://github.com/operator-framework/operator-lifecycle-manager.git`
 - `community-operators-prod: https://github.com/redhat-openshift-ecosystem/community-operators-prod/tree/main/operators`
 
-## Prerequisites
-- `Kubernetes v1.11.3+ cluster`
+## Rely on
 - `kubectl v1.11.3+`
+- `Kubernetes v1.11.3+ cluster`
 
 ## Environment version
-1. Kubernetes Version: 
-2. 机器配置：4C，8G
+1. 机器配置：4核，8G
+2. Kubernetes Version: v1.23.6
 3. 集群安装方法: https://github.com/caoyingjunz/kubez-ansible
 ## 组件介绍:
 ```text
@@ -31,7 +31,9 @@ OLM可以帮助用户，安装，更新，和管理所有Operator的生命周期
 ### Install:
 - `Scripted`
 ```text
-curl -sL https://github.com/operator-framework/operator-lifecycle-manager/releases/download/v0.19.1/install.sh | bash -s v0.19.1
+curl -L https://github.com/operator-framework/operator-lifecycle-manager/releases/download/v0.19.1/install.sh -o install.sh
+chmod +x install.sh
+./install.sh v0.19.1
 ```
 ![img](img/install.png)
 
