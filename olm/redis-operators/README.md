@@ -7,6 +7,8 @@
 1. kubectl create -f https://operatorhub.io/install/redis-operator.yaml
 ```
 ![img](img/redis-operators.png)
+
+
 [redis-operator.yaml](yml/redis-operator.yaml)
 
 ```text
@@ -19,12 +21,16 @@
 ```
 ![img](img/storage.png)
 ![img](img/storage2.png)
+
+
 [storage-class.yml](yml/storage-class.yml)
 
 ```shell
 4. kubectl create -f local-pv.yml
 ```
 ![img](img/222.png)
+
+
 [local-pv.yml](yml/local-pv.yaml)
 
 
@@ -32,6 +38,8 @@
 5. kubectl create -f redis-single.yml
 ```
 ![img](img/redis-po.png)
+
+
 [redis-single](yml/redis-single.yml)
 
 ## Validation
