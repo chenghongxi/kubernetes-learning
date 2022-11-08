@@ -21,8 +21,15 @@
 ![img](img/storage2.png)
 [storage-class.yml](yml/storage-class.yml)
 
+```shell
+4. kubectl create -f local-pv.yml
+```
+![img](img/222.png)
+[local-pv.yml](yml/local-pv.yaml)
+
+
 ```text
-4. kubectl create -f redis-single.yml
+5. kubectl create -f redis-single.yml
 ```
 ![img](img/redis-po.png)
 [redis-single](yml/redis-single.yml)
