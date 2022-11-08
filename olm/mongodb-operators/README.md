@@ -6,6 +6,7 @@
 ```
 ![img](img/mongodb-operator.png)
 
+[mongodb-operator](yml/mongodb-operator.yaml)
 
 ```shell
 2. kubectl get csv -n operators
