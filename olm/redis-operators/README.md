@@ -5,6 +5,9 @@
 - `=> v6`
 - `=> v7`
 
+## Documentation
+https://ot-container-kit.github.io/redis-operator/
+
 ## Rely on
 - `Kubernetes 1.18.0 cluster`
 

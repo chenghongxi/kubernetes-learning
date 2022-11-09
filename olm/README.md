@@ -1,8 +1,8 @@
 # Operator Lifecycle Manager(OLM)
 
-- `Website: https://docs.openshift.com/container-platform/3.11/install_config/installing-operator-framework.html`
-- `GitHub: https://github.com/operator-framework/operator-lifecycle-manager.git`
-- `Operatorhub: https://operatorhub.io/`
+- `Website`: https://docs.openshift.com/container-platform/3.11/install_config/installing-operator-framework.html
+- `GitHub`: https://github.com/operator-framework/operator-lifecycle-manager.git
+- `Operatorhub`: https://operatorhub.io/
 
 ## Rely on
 - `kubectl v1.11.3+`
@@ -68,7 +68,5 @@ kubectl -n olm get deployments
 [Redis-Operators](redis-operators/README.md)
 
 [MongoDB-Operators](mongodb-operators/README.md)
-
-[Postgresql-Operators](postgresql-operators/README.md)
 
 [Rabbitmq-Operators](rabbitmq-operators/README.md)
