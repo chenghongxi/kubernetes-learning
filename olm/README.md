@@ -23,19 +23,28 @@ OLM(Operator Lifecycle Manager) 作为 Operator Framework 的一部分，可以�
 ```text
 OLM 由两个 Operator 构成：OLM Operator 和 Catalog Operator，其分别管理以下几个基础 CRD 模型：
 ```
+
 ![img.png](img/1.jpg)
 
 ## 使用场景:
 OLM可以帮助用户，安装，更新，和管理所有Operator的生命周期
 
+
 ### Install:
 - `Scripted`
-```text
+```shell
 curl -L https://github.com/operator-framework/operator-lifecycle-manager/releases/download/v0.19.1/install.sh -o install.sh
 chmod +x install.sh
 ./install.sh v0.19.1
 ```
+
 ![img](img/install.png)
+
+##### `安装过程解析`
+
+[crds.yaml](yml/crds.yaml)
+
+[olm.yml](yml/olm.yaml)
 
 - `Operator-sdk`
 
