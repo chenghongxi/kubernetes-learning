@@ -68,3 +68,5 @@ kubectl -n olm get deployments
 [Redis-Operators](redis-operators/README.md)
 
 [MongoDB-Operators](mongodb-operators/README.md)
+
+[Postgresql-Operators](postgresql-operators/README.md)

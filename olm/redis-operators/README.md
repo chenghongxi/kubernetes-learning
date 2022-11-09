@@ -1,5 +1,13 @@
 # redis-operators
 
+## Supported redis versions:
+
+- `=> v6`
+- `=> v7`
+
+## Rely on
+- `Kubernetes 1.18.0 cluster`
+
 ## Install:
 
 
