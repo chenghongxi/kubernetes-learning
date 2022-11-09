@@ -70,3 +70,5 @@ kubectl -n olm get deployments
 [MongoDB-Operators](mongodb-operators/README.md)
 
 [Postgresql-Operators](postgresql-operators/README.md)
+
+[Rabbitmq-Operators](rabbitmq-operators/README.md)
