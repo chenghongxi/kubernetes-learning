@@ -14,7 +14,7 @@ https://ot-container-kit.github.io/redis-operator/
 ## Install:
 
 
-```text
+```shell
 1. kubectl create -f https://operatorhub.io/install/redis-operator.yaml
 ```
 ![img](img/redis-operators.png)
@@ -22,12 +22,12 @@ https://ot-container-kit.github.io/redis-operator/
 
 [redis-operator.yaml](yml/redis-operator.yaml)
 
-```text
+```shell
 2. kubectl get csv -n operators
 ```
 ![img](img/csv.png)
 
-```text
+```shell
 3. kubectl create -f ./storage-class.yml
 ```
 ![img](img/storage.png)
@@ -45,11 +45,10 @@ https://ot-container-kit.github.io/redis-operator/
 [local-pv.yml](yml/local-pv.yaml)
 
 
-```text
+```shell
 5. kubectl create -f redis-single.yml
 ```
 ![img](img/redis-po.png)
-
 
 [redis-single](yml/redis-single.yml)
 
