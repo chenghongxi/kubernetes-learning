@@ -121,10 +121,6 @@ func Run(completeOptions completedServerRunOptions, stopCh <-chan struct{}) erro
 - `APIExtensionServer`
 - `AggregratorServer`
 
-
-每个server的创建都有对应的config:
-比如KubeAPIServer
-
 CreateServerChain函数: https://github.com/kubernetes/kubernetes/blob/f87231003aeb43bf884cf9dc10b1247b8ae5cbb8/cmd/kube-apiserver/app/server.go#L181
 
 ```go
@@ -168,6 +164,13 @@ func CreateServerChain(completedOptions completedServerRunOptions) (*aggregatora
     return aggregatorServer, nil
 }
 ```
+CreateServerChain函数解析:
+
+- `1. 通过 CreateKubeAPIServerConfig函数 返回 kubeAPIServerConfig`
+
+- `2. 每个server在创建时需要对应的config,函数结束时，返回APIAggregator`
+
+- `3. 完成server注册`
 
 
 
