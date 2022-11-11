@@ -30,8 +30,13 @@ func main() {
 }
 ```
 
-2. NewKubeletCommand函数主要作用，从命令行的RunE回调函数-->Run函数，开始执行启动流程。
-    代码: https://github.com/kubernetes/kubernetes/blob/cf12a74b18b66efc577ec819c78a0c68f6d49225/cmd/kubelet/app/server.go#L124
+2. 
+```text
+NewKubeletCommand函数主要作用，从命令行的RunE回调函数-->Run函数，开始启动流程流程,从下面的代码中可以看到,NewKubeletCommand 函数是做前期的工作准备，
+比如：参数解析，校验，构建依赖，构建server,通过这些参数运行Kubelet,进入Run函数:
+```
+    
+代码: https://github.com/kubernetes/kubernetes/blob/cf12a74b18b66efc577ec819c78a0c68f6d49225/cmd/kubelet/app/server.go#L124
 ```text
 func NewKubeletCommand() *cobra.Command {
 	cleanFlagSet := pflag.NewFlagSet(componentKubelet, pflag.ContinueOnError)
@@ -39,7 +44,7 @@ func NewKubeletCommand() *cobra.Command {
 	kubeletFlags := options.NewKubeletFlags()
 
 	kubeletConfig, err := options.NewKubeletConfiguration()
-	// programmer error
+	// 错误
 	if err != nil {
 		klog.ErrorS(err, "Failed to create a new kubelet configuration")
 		os.Exit(1)
@@ -62,10 +67,6 @@ periodically for updates. The monitoring period is 20s by default and is configu
 via a flag.
 HTTP endpoint: HTTP endpoint passed as a parameter on the command line. This endpoint
 is checked every 20 seconds (also configurable with a flag).`,
-		// The Kubelet has special flag parsing requirements to enforce flag precedence rules,
-		// so we do all our parsing manually in Run, below.
-		// DisableFlagParsing=true provides the full set of flags passed to the kubelet in the
-		// `args` arg to Run, without Cobra's interference.
 		DisableFlagParsing: true,
 		SilenceUsage:       true,
 		RunE: func(cmd *cobra.Command, args []string) error {
@@ -74,7 +75,7 @@ is checked every 20 seconds (also configurable with a flag).`,
 				return fmt.Errorf("failed to parse kubelet flag: %w", err)
 			}
 
-			// check if there are non-flag arguments in the command line
+
 			// 检查是否有命令未传入参数，若是，则返回错误和使用指引
 			cmds := cleanFlagSet.Args()
 			if len(cmds) > 0 {
@@ -91,7 +92,7 @@ is checked every 20 seconds (also configurable with a flag).`,
 				return cmd.Help()
 			}
 
-			// short-circuit on verflag
+
 			// 若是查看版本信息，则返回版本信息及退出
 			verflag.PrintAndExitIfRequested()
 
@@ -100,7 +101,7 @@ is checked every 20 seconds (also configurable with a flag).`,
 				return fmt.Errorf("failed to set feature gates from initial flags-based config: %w", err)
 			}
 
-			// validate the initial KubeletFlags
+
 			// 校验kubelet flag相关参数传入是否合法，如果合法则初始化到对应变量
 			if err := options.ValidateKubeletFlags(kubeletFlags); err != nil {
 				return fmt.Errorf("failed to validate kubelet flags: %w", err)
@@ -110,26 +111,24 @@ is checked every 20 seconds (also configurable with a flag).`,
 				klog.InfoS("--pod-infra-container-image will not be pruned by the image garbage collector in kubelet and should also be set in the remote runtime")
 			}
 
-			// load kubelet config file, if provided
+	
 			// 检测并解析kubelet配置文件
 			if configFile := kubeletFlags.KubeletConfigFile; len(configFile) > 0 {
 				kubeletConfig, err = loadConfigFile(configFile)
 				if err != nil {
 					return fmt.Errorf("failed to load kubelet config file, error: %w, path: %s", err, configFile)
 				}
-				// We must enforce flag precedence by re-parsing the command line into the new object.
-				// This is necessary to preserve backwards-compatibility across binary upgrades.
-				// See issue #56171 for more details.
+
 				if err := kubeletConfigFlagPrecedence(kubeletConfig, args); err != nil {
 					return fmt.Errorf("failed to precedence kubeletConfigFlag: %w", err)
 				}
-				// update feature gates based on new config
+
 				if err := utilfeature.DefaultMutableFeatureGate.SetFromMap(kubeletConfig.FeatureGates); err != nil {
 					return fmt.Errorf("failed to set feature gates from initial flags-based config: %w", err)
 				}
 			}
 
-			// Config and flags parsed, now we can initialize logging.
+			// 初始化日志
 			logs.InitLogs()
 			if err := logsapi.ValidateAndApplyAsField(&kubeletConfig.Logging, utilfeature.DefaultFeatureGate, field.NewPath("logging")); err != nil {
 				return fmt.Errorf("initialize logging: %v", err)
@@ -137,8 +136,7 @@ is checked every 20 seconds (also configurable with a flag).`,
 			//若是查看参数使用，则输出所有参数说明
 			cliflag.PrintFlags(cleanFlagSet)
 
-			// We always validate the local configuration (command line + config file).
-			// This is the default "last-known-good" config for dynamic config, and must always remain valid.
+			// 本地命令行+配置文件验证
 			if err := kubeletconfigvalidation.ValidateKubeletConfiguration(kubeletConfig, utilfeature.DefaultFeatureGate); err != nil {
 				return fmt.Errorf("failed to validate kubelet configuration, error: %w, path: %s", err, kubeletConfig)
 			}
@@ -153,7 +151,7 @@ is checked every 20 seconds (also configurable with a flag).`,
 				KubeletConfiguration: *kubeletConfig,
 			}
 
-			// use kubeletServer to construct the default KubeletDeps
+
 			// 通过kubelet server和DefaultFeatureGate，构建kubeletDeps，
 			// kubeletDeps主要集成了kubelet的运行依赖如：认证信息、第三方云厂商信息、事件记录、挂载、网络/卷插件、OOM管理等依赖组件调用链操作句柄
 			kubeletDeps, err := UnsecuredDependencies(kubeletServer, utilfeature.DefaultFeatureGate)
@@ -165,7 +163,6 @@ is checked every 20 seconds (also configurable with a flag).`,
 				klog.ErrorS(err, "kubelet running with insufficient permissions")
 			}
 
-			// make the kubelet's config safe for logging
 			config := kubeletServer.KubeletConfiguration.DeepCopy()
 			for k := range config.StaticPodURLHeader {
 				config.StaticPodURLHeader[k] = []string{"<masked>"}
@@ -173,24 +170,22 @@ is checked every 20 seconds (also configurable with a flag).`,
 			// log the kubelet's config for inspection
 			klog.V(5).InfoS("KubeletConfiguration", "configuration", config)
 
-			// set up signal context for kubelet shutdown
+			// 设置kubelet关闭的信号环境
 			ctx := genericapiserver.SetupSignalContext()
 
 			utilfeature.DefaultMutableFeatureGate.AddMetrics()
-			// run the kubelet
+			
 			// 启动kubelet，把ctx、kubeletServer、kubeletDeps、utilfeature.DefaultFeatureGate这些准备好的参数传入，
 			// 执行内层核心Run函数
 			return Run(ctx, kubeletServer, kubeletDeps, utilfeature.DefaultFeatureGate)
 		},
 	}
 
-	// keep cleanFlagSet separate, so Cobra doesn't pollute it with the global flags
 	kubeletFlags.AddFlags(cleanFlagSet)
 	options.AddKubeletConfigFlags(cleanFlagSet, kubeletConfig)
 	options.AddGlobalFlags(cleanFlagSet)
 	cleanFlagSet.BoolP("help", "h", false, fmt.Sprintf("help for %s", cmd.Name()))
 
-	// ugly, but necessary, because Cobra's default UsageFunc and HelpFunc pollute the flagset with global flags
 	const usageFmt = "Usage:\n  %s\n\nFlags:\n%s"
 	cmd.SetUsageFunc(func(cmd *cobra.Command) error {
 		fmt.Fprintf(cmd.OutOrStderr(), usageFmt, cmd.UseLine(), cleanFlagSet.FlagUsagesWrapped(2))
@@ -203,6 +198,8 @@ is checked every 20 seconds (also configurable with a flag).`,
 	return cmd
 }
 ```
+
+3. 
 
 
 
