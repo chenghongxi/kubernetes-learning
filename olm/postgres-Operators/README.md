@@ -1,19 +1,18 @@
 # Postgres-Operator
 
 ## Documentation
-https://postgres-operator.readthedocs.io/en/latest/
+https://access.crunchydata.com/documentation/postgres-operator/v5/
 
 ## Github
-https://github.com/zalando/postgres-operator
+https://github.com/CrunchyData/postgres-operator
 
 ## Rely On
-- `Kubernetes Cluster Version > 1.14.0`
-- `Kubernetes Cluster Version < 1.21`
+- `Kubernetes Cluster Version > 1.19.0`
 
 ## Install:
 
 ```shell
-1. kubectl create -f https://operatorhub.io/install/postgres-operator.yaml
+1. kubectl create -f https://operatorhub.io/install/postgresql.yaml
 ```
 ![img](img/postgres-Operator.png)
 
