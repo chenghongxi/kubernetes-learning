@@ -63,3 +63,12 @@ https://ot-mongodb-operator.netlify.app/
 ```
 ![img](img/conn_mongo.png)
 
+## UnInstall
+```shell
+1. kubectl delete -f Mongodb.yaml
+2. kubectl delete -f mongodb-secret.yml
+3. kubectl delete -f local-pv.yaml
+4. kubectl delete -f storage-class.yaml
+5. kubectl delete -f mongodb-operator.yaml
+```
+

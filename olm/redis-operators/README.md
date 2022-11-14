@@ -61,5 +61,13 @@ https://ot-container-kit.github.io/redis-operator/
 ```
 ![img](img/exec-redis.png)
 
+## UnInstall
+```shell
+1. kubectl delete -f redis-single.yml
+2. kubectl delete -f local-pv.yml
+3. kubectl delete -f storage-class.yml
+4. kubectl delete -f redis-operator.yaml
+```
+
 
 

@@ -43,3 +43,11 @@ https://www.rabbitmq.com/kubernetes/operator/operator-overview.html
 ![img](img/rabbitmq-pod.png)
 
 [rabbitmq.yaml](yml/rabbitmq.yaml)
+
+## UnInstall
+```shell
+1. kubectl delete -f rabbitmq.yaml
+2. kubectl delete -f local-pv.yaml
+3. kubectl delete -f storage-class.yml
+4. kubectl delete -f rabbitmq-cluster-operator.yaml
+```
