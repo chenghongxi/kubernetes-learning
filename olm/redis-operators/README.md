@@ -8,6 +8,9 @@
 ## Documentation
 https://ot-container-kit.github.io/redis-operator/
 
+## GitHub
+https://github.com/ot-container-kit/redis-operator
+
 ## Rely on
 - `Kubernetes 1.18.0 cluster`
 

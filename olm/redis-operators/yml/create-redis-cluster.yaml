@@ -1,11 +1,3 @@
----
-kind: StorageClass
-apiVersion: storage.k8s.io/v1
-metadata:
-  name: redis-storage
-provisioner: kubernetes.io/no-provisioner
-volumeBindingMode: WaitForFirstConsumer
----
 apiVersion: redis.redis.opstreelabs.in/v1beta1
 kind: Redis
 metadata:
@@ -26,7 +18,7 @@ spec:
       spec:
         accessModes:
           - ReadWriteOnce
-        storageClassName: "redis-storage"
+        storageClassName: "managed-nfs-storage"
         resources:
           requests:
             storage: 1Gi
