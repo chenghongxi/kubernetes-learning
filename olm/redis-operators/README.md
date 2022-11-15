@@ -20,7 +20,7 @@ https://ot-container-kit.github.io/redis-operator/
 ![img](img/redis-operators.png)
 
 
-[redis-operator.yaml](yml/redis-operator.yaml)
+[redis-operator.yaml](https://operatorhub.io/install/redis-operator.yaml)
 
 ```shell
 2. kubectl get csv -n operators
@@ -30,27 +30,11 @@ https://ot-container-kit.github.io/redis-operator/
 ```shell
 3. kubectl apply -f https://raw.githubusercontent.com/chenghongxi/kubernetes-learning/master/olm/redis-operators/yml/create-redis-cluster.yaml
 ```
-![img](img/storage.png)
-![img](img/storage2.png)
+![img](img/create-redis-cluster.png)
 
 
-[storage-class.yml](yml/storage-class.yml)
+[create-redis-cluster.yaml](https://raw.githubusercontent.com/chenghongxi/kubernetes-learning/master/olm/redis-operators/yml/create-redis-cluster.yaml)
 
-```shell
-4. kubectl create -f local-pv.yml
-```
-![img](img/222.png)
-
-
-[local-pv.yml](yml/local-pv.yaml)
-
-
-```shell
-5. kubectl create -f redis-single.yml
-```
-![img](img/redis-po.png)
-
-[redis-single](yml/redis-single.yml)
 
 ## Validation
 ```text
@@ -63,10 +47,7 @@ https://ot-container-kit.github.io/redis-operator/
 
 ## UnInstall
 ```shell
-1. kubectl delete -f redis-single.yml
-2. kubectl delete -f local-pv.yml
-3. kubectl delete -f storage-class.yml
-4. kubectl delete -f redis-operator.yaml
+kubectl delete -f https://raw.githubusercontent.com/chenghongxi/kubernetes-learning/master/olm/redis-operators/yml/create-redis-cluster.yaml
 ```
 
 
