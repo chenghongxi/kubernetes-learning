@@ -40,11 +40,15 @@ https://github.com/ot-container-kit/redis-operator
 
 
 ## Validation
+```shell
+1. kubectl get sc,pv,pvc,po
+```
+![img](img/get-redis-cluster.png)
 ```text
-1. kubectl exec -it redis-standalone-0 -- /bin/bash
-2. redis-cli -c
-3. set k1 v1
-4. get k1
+2. kubectl exec -it redis-standalone-0 -- /bin/bash
+3. redis-cli -c
+4. set k1 v1
+5. get k1
 ```
 ![img](img/exec-redis.png)
 
