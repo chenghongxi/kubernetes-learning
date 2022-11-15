@@ -20,7 +20,7 @@ https://github.com/ot-container-kit/redis-operator
 ```shell
 1. kubectl create -f https://operatorhub.io/install/redis-operator.yaml
 ```
-![img](img/redis-operators.png)
+![img](picture/redis-operators.png)
 
 
 [redis-operator.yaml](https://operatorhub.io/install/redis-operator.yaml)
@@ -28,12 +28,12 @@ https://github.com/ot-container-kit/redis-operator
 ```shell
 2. kubectl get csv -n operators
 ```
-![img](img/csv.png)
+![img](picture/csv.png)
 
 ```shell
 3. kubectl apply -f https://raw.githubusercontent.com/chenghongxi/kubernetes-learning/master/olm/redis-operators/yml/create-redis-cluster.yaml
 ```
-![img](img/create-redis-cluster.png)
+![img](picture/create-redis-cluster.png)
 
 
 [create-redis-cluster.yaml](https://raw.githubusercontent.com/chenghongxi/kubernetes-learning/master/olm/redis-operators/yml/create-redis-cluster.yaml)
@@ -43,14 +43,14 @@ https://github.com/ot-container-kit/redis-operator
 ```shell
 1. kubectl get sc,pv,pvc,po
 ```
-![img](img/get-redis-cluster.png)
+![img](picture/get-redis-cluster.png)
 ```text
 2. kubectl exec -it redis-standalone-0 -- /bin/bash
 3. redis-cli -c
 4. set k1 v1
 5. get k1
 ```
-![img](img/exec-redis.png)
+![img](picture/exec-redis.png)
 
 ## UnInstall
 ```shell
