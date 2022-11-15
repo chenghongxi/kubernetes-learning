@@ -1,9 +1,8 @@
 # redis-operators
+基于 `Golang` 的 Redos-Operator,可以在 `Kubernetes` 集群上创建 `Redis standalone/cluster` 模式。使用 `Redis-Exporter` 提供监控功能。
 
 ## Supported redis versions:
-
 - `=> v6`
-- `=> v7`
 
 ## Documentation
 https://ot-container-kit.github.io/redis-operator/
