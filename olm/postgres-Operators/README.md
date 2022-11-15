@@ -47,11 +47,22 @@ https://github.com/CrunchyData/postgres-operator
 ```shell
 7. kubectl create -f Postgres-cluster.yml
 ```
+`hippo-instance1-gfb5-0` `pod` 中会创建几个容器，分别为:  `database`, `replication-cert-copy`, `pgbackrest`, `pgbackrest-config`,`postgres-startup (init)`, `nss-wrapper-init (init)`
+
+`hippo-repo-host-0` `pod` 中会创建几个容器，分别为:`pgbackrest`, `pgbackrest-config`, `pgbackrest-log-dir (init)`, `nss-wrapper-init (init)`
+
 ![img](img/po.png)
 
 [Postgres-cluster.yml](yml/Postgres-cluster.yml)
 
 ## Validation
+```text
+1. kubectl exec -it hippo-instance1-gfb5-0 -- /bin/bash
+2. psql
+```
+
+![img](img/validation.png)
+
 
 
 
