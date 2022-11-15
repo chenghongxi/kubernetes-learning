@@ -72,3 +72,10 @@ kubectl -n olm get deployments
 [Rabbitmq-Operators](rabbitmq-operators/README.md)
 
 [Postgres-Operators](postgres-Operators/README.md)
+
+## UnInstall
+```shell
+1. kubectl delete -f olm.yaml
+2. kubectl delete -f crds.yaml
+```
+
