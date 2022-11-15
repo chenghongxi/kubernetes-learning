@@ -28,7 +28,7 @@ https://ot-container-kit.github.io/redis-operator/
 ![img](img/csv.png)
 
 ```shell
-3. kubectl create -f https://raw.githubusercontent.com/chenghongxi/kubernetes-learning/master/olm/redis-operators/yml/redis-operators.yml
+3. kubectl create -f https://raw.githubusercontent.com/chenghongxi/kubernetes-learning/master/olm/redis-operators/yml/create-redis-cluster.yaml
 ```
 ![img](img/storage.png)
 ![img](img/storage2.png)
