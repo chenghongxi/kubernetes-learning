@@ -1,4 +1,6 @@
-# rabbitmq-operators
+# Rabbitmq-Operators
+
+部署和管理RabbitMQ集群。为 RabbitMQ 集群的生命周期（创建、升级、正常关闭）设计的自定义控制器和自定义资源定义 ( CRD )
 
 ## Documentation
 https://www.rabbitmq.com/kubernetes/operator/operator-overview.html
@@ -28,27 +30,16 @@ https://github.com/rabbitmq/cluster-operator
 ```shell
 3. kubectl create -f https://raw.githubusercontent.com/chenghongxi/kubernetes-learning/master/olm/rabbitmq-operators/yml/create-rabbitmq-cluster.yaml
 ```
-![img](img/storage.png)
+![img](img/create-rabbitmq-cluster.png)
 
-[storage-class.yml](yml/storage-class.yml)
+[create-rabbitmq-cluster.yaml](https://raw.githubusercontent.com/chenghongxi/kubernetes-learning/master/olm/rabbitmq-operators/yml/create-rabbitmq-cluster.yaml)
 
+## Validation
 ```shell
-4. kubectl create -f local-pv.yml
+1. kubectl get po,sc,pv,pvc,secret
 ```
-![img](img/local-pv.png)
-
-
-[local-pv.yml](yml/local-pv.yaml)
-
-```shell
-5. kubectl create -f rabbitmq.yaml
-```
-![img](img/rabbitmq-pod.png)
-
-[rabbitmq.yaml](yml/rabbitmq.yaml)
-
+![img](img/validation.png)
 ## UnInstall
 ```shell
 1. kubectl delete -f https://raw.githubusercontent.com/chenghongxi/kubernetes-learning/master/olm/rabbitmq-operators/yml/create-rabbitmq-cluster.yaml
-2. kubectl delete csv redis-operator.v0.13.0
 ```

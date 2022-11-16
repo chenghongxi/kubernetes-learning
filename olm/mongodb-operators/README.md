@@ -1,4 +1,9 @@
-# mongodb-operators
+# Mongodb-Operators
+
+基于 golang 的操作员，用于创建和管理 MongoDB standalone or cluster
+
+MongoDB Operator  用于在 Kubernetes 和 Openshift 集群上创建、更新和管理 MongoDB standalone, replicated, and arbiter replicated。
+
 
 ## Documentation
 https://ot-mongodb-operator.netlify.app/
@@ -21,7 +26,7 @@ https://ot-mongodb-operator.netlify.app/
 
 
 ```shell
-3. kubectl create -f storage-class.yml
+3. kubectl apply -f https://raw.githubusercontent.com/chenghongxi/kubernetes-learning/master/olm/mongodb-operators/yml/create-mongodb-cluster.yaml
 ```
 ![img](img/storage-class.png)
 

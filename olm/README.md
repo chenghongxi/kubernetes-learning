@@ -1,4 +1,4 @@
-# Operator Lifecycle Manager(OLM)
+# Operator Lifecycle Manager ( OLM ) 
 
 - `Website`: https://access.redhat.com/documentation/zh-cn/openshift_container_platform/4.11/html/operators/_operator-lifecycle-manager-olm
 - `GitHub`: https://github.com/operator-framework/operator-lifecycle-manager.git
@@ -14,9 +14,9 @@
 3. 集群安装方法: https://github.com/caoyingjunz/kubez-ansible
 ## 组件介绍:
 ```text
-OLM(Operator Lifecycle Manager) 作为 Operator Framework 的一部分，可以帮助用户进行 Operator 的自动安装，
+OLM( Operator Lifecycle Manager ) 作为 Operator Framework 的一部分，可以帮助用户进行 Operator 的自动安装，
 升级及其生命周期的管理。同时 OLM 自身也是以 Operator 的形式进行安装部署，可以说它的工作方式是以 Operators 来管理 Operators，
-而它面向 Operator 提供了声明式 (declarative) 的自动化管理能力也完全符合 Kubernetes 交互的设计理念。
+而它面向 Operator 提供了声明式 ( declarative ) 的自动化管理能力也完全符合 Kubernetes 交互的设计理念。
 ```
 
 ## 组件原理:
@@ -25,7 +25,7 @@ OLM 由两个 Operator 构成：OLM Operator 和 Catalog Operator
 
 OLM Operator: 负责部署由 CSV 资源定义的应用程序。
 
-Catalog Operator: 负责解析和安装集群服务版本（CSV）以及它们指定的所需资源。另外还负责监视频道中的目录源中是否有软件包更新，并将其升级（可选择自动）至最新可用版本。
+Catalog Operator: 负责解析和安装集群服务版本 ( CSV ) 以及它们指定的所需资源。另外还负责监视频道中的目录源中是否有软件包更新，并将其升级（可选择自动）至最新可用版本。
 
 两个Operator其分别管理以下几个基础 CRD 模型：
 ```
@@ -33,7 +33,7 @@ Catalog Operator: 负责解析和安装集群服务版本（CSV）以及它们�
 ![img.png](img/1.jpg)
 
 ## 使用场景:
-OLM可以帮助用户，安装，更新，和管理所有Operator ( 如: redis-operator,mongodb-operator ) 的生命周期
+OLM 可以帮助用户，安装，更新，和管理所有Operator ( 如: redis-operator , mongodb-operator ) 的生命周期.
 
 
 ### Install:
