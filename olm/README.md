@@ -1,6 +1,6 @@
 # Operator Lifecycle Manager(OLM)
 
-- `Website`: https://docs.openshift.com/container-platform/3.11/install_config/installing-operator-framework.html
+- `Website`: https://access.redhat.com/documentation/zh-cn/openshift_container_platform/4.11/html/operators/_operator-lifecycle-manager-olm
 - `GitHub`: https://github.com/operator-framework/operator-lifecycle-manager.git
 - `Operatorhub`: https://operatorhub.io/
 
@@ -21,13 +21,19 @@ OLM(Operator Lifecycle Manager) 作为 Operator Framework 的一部分，可以�
 
 ## 组件原理:
 ```text
-OLM 由两个 Operator 构成：OLM Operator 和 Catalog Operator，其分别管理以下几个基础 CRD 模型：
+OLM 由两个 Operator 构成：OLM Operator 和 Catalog Operator
+
+OLM Operator: 负责部署由 CSV 资源定义的应用程序。
+
+Catalog Operator: 负责解析和安装集群服务版本（CSV）以及它们指定的所需资源。另外还负责监视频道中的目录源中是否有软件包更新，并将其升级（可选择自动）至最新可用版本。
+
+两个Operator其分别管理以下几个基础 CRD 模型：
 ```
 
 ![img.png](img/1.jpg)
 
 ## 使用场景:
-OLM可以帮助用户，安装，更新，和管理所有Operator的生命周期
+OLM可以帮助用户，安装，更新，和管理所有Operator ( 如: redis-operator,mongodb-operator ) 的生命周期
 
 
 ### Install:
