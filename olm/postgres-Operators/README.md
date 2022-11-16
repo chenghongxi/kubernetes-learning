@@ -14,7 +14,7 @@ https://github.com/CrunchyData/postgres-operator
 ```shell
 1. kubectl create -f https://operatorhub.io/install/postgresql.yaml
 ```
-![img](img/postgres-Operator.png)
+![img](picture/postgres-Operator.png)
 
 
 [postgres-operator.yaml](yml/postgres-operator.yaml)
@@ -22,13 +22,13 @@ https://github.com/CrunchyData/postgres-operator
 ```shell
 2. kubectl get csv -n operators
 ```
-![img](img/operator.png)
+![img](picture/operator.png)
 
 ```shell
 3. kubectl create -f sc.yml
 4. kubectl create -f sc1.yml
 ```
-![img](img/sc.png)
+![img](picture/sc.png)
 
 [sc.yml](yml/sc.yml)
 
@@ -38,7 +38,7 @@ https://github.com/CrunchyData/postgres-operator
 5. kubectl create -f local-pv.yml
 6. kubectl create -f local-pv1.yml
 ```
-![img](img/pv.png)
+![img](picture/pv.png)
 
 [local-pv.yml](yml/local-pv.yml)
 
@@ -51,7 +51,7 @@ https://github.com/CrunchyData/postgres-operator
 
 `hippo-repo-host-0` `pod` 中会创建几个容器，分别为:`pgbackrest`, `pgbackrest-config`, `pgbackrest-log-dir (init)`, `nss-wrapper-init (init)`
 
-![img](img/po.png)
+![img](picture/po.png)
 
 [Postgres-cluster.yml](yml/Postgres-cluster.yml)
 
@@ -61,7 +61,7 @@ https://github.com/CrunchyData/postgres-operator
 2. psql
 ```
 
-![img](img/validation.png)
+![img](picture/validation.png)
 
 
 

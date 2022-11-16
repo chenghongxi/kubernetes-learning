@@ -30,7 +30,7 @@ Catalog Operator: 负责解析和安装集群服务版本 ( CSV ) 以及它们�
 两个Operator其分别管理以下几个基础 CRD 模型：
 ```
 
-![img.png](img/1.jpg)
+![img.png](picture/1.jpg)
 
 ## 使用场景:
 OLM 可以帮助用户，安装，更新，和管理所有Operator ( 如: redis-operator , mongodb-operator ) 的生命周期.
@@ -44,7 +44,7 @@ chmod +x install.sh
 ./install.sh v0.19.1
 ```
 
-![img](img/install.png)
+![img](picture/install.png)
 
 ##### `安装过程解析`
 
@@ -63,11 +63,11 @@ https://olm.operatorframework.io/docs/getting-started/
 ```text
 kubectl get ns
 ```
-![img](img/ns.png)
+![img](picture/ns.png)
 ```text
 kubectl -n olm get deployments
 ```
-![img](img/deploy.png)
+![img](picture/deploy.png)
 
 ## UnInstall
 ```shell

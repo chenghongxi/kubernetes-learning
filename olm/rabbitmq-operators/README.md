@@ -17,7 +17,7 @@ https://github.com/rabbitmq/cluster-operator
 ```shell
 1. kubectl create -f https://operatorhub.io/install/rabbitmq-cluster-operator.yaml
 ```
-![img](img/rabbitmq-cluster-operator.png)
+![img](picture/rabbitmq-cluster-operator.png)
 
 
 [rabbitmq-cluster-operator.yaml](yml/rabbitmq-cluster-operator.yaml)
@@ -25,12 +25,12 @@ https://github.com/rabbitmq/cluster-operator
 ```shell
 2. kubectl get csv -n operators
 ```
-![img](img/csv.png)
+![img](picture/csv.png)
 
 ```shell
 3. kubectl create -f https://raw.githubusercontent.com/chenghongxi/kubernetes-learning/master/olm/rabbitmq-operators/yml/create-rabbitmq-cluster.yaml
 ```
-![img](img/create-rabbitmq-cluster.png)
+![img](picture/create-rabbitmq-cluster.png)
 
 [create-rabbitmq-cluster.yaml](https://raw.githubusercontent.com/chenghongxi/kubernetes-learning/master/olm/rabbitmq-operators/yml/create-rabbitmq-cluster.yaml)
 
@@ -38,7 +38,7 @@ https://github.com/rabbitmq/cluster-operator
 ```shell
 1. kubectl get po,sc,pv,pvc,secret
 ```
-![img](img/validation.png)
+![img](picture/validation.png)
 ## UnInstall
 - `删除步骤 3 中的资源`
 ```shell
