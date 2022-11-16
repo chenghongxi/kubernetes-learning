@@ -15,58 +15,45 @@ https://ot-mongodb-operator.netlify.app/
 ```text
 1. kubectl create -f https://operatorhub.io/install/mongodb-operator.yaml
 ```
-![img](img/mongodb-operator.png)
+![img](picture/mongodb-operator.png)
 
-[mongodb-operator](yml/mongodb-operator.yaml)
+[mongodb-operator.yml](https://operatorhub.io/install/mongodb-operator.yaml)
 
 ```shell
 2. kubectl get csv -n operators
 ```
-![img](img/csv.png)
+![img](picture/csv.png)
 
 
 ```shell
-3. kubectl apply -f https://raw.githubusercontent.com/chenghongxi/kubernetes-learning/master/olm/mongodb-operators/yml/create-mongodb-cluster.yaml
+3. kubectl apply -f https://raw.githubusercontent.com/chenghongxi/kubernetes-learning/master/olm/mongodb-operators/yml/create-mongodb-cluster.yml
 ```
-![img](img/storage-class.png)
+![img](picture/create-mongodb-cluster.png)
 
 
-[storage-class.yml](yml/storage-class.yaml)
+[create-mongodb-cluster](https://raw.githubusercontent.com/chenghongxi/kubernetes-learning/master/olm/mongodb-operators/yml/create-mongodb-cluster.yml)
 
-```shell
-4. kubectl create -f local-pv.yml
-```
-![img](img/local-pv.png)
-
-
-[local-pv.yml](yml/local-pv.yaml)
-
-
-```shell
-5. kubectl create -f mongodb-secret.yml 
-```
-![img](img/storage-class.png)
-
-
-[mongodb-secret.yml](yml/mongodb-secret.yml)
-
-
-```shell
-6. kubectl create -f Mongodb.yaml
-```
-![img](img/create.png)
-
-
-[Mongodb.yaml](yml/Mongodb.yaml)
 
 ## Validation
-
+```shell
+1. kubectl get po,sc,pv,pvc
+```
+![img](picture/validation.png)
 ```shell
 1. kubectl exec -it mongodb-standalone-0 -- /bin/bash
 2. mongo
 3. use pixiuDB
 ```
-![img](img/conn_mongo.png)
+![img](picture/conn_mongo.png)
 
-https://raw.githubusercontent.com/chenghongxi/kubernetes-learning/master/olm/rabbitmq-operators/yml/create-rabbitmq-cluster.yaml
 
+## UnInstall
+- `删除步骤 3 中的资源`
+```shell
+kubectl delete -f https://raw.githubusercontent.com/chenghongxi/kubernetes-learning/master/olm/mongodb-operators/yml/create-mongodb-cluster.yml
+```
+- `删除此 Operator`
+```shell
+1. kubectl delete subscription <subscription-name> -n <namespace>
+2. kubectl delete clusterserviceversion -n <namespace>
+```

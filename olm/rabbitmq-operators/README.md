@@ -47,5 +47,5 @@ kubectl delete -f https://raw.githubusercontent.com/chenghongxi/kubernetes-learn
 - `删除此 Operator`
 ```shell
 1. kubectl delete subscription <subscription-name> -n <namespace>
-2. kubectl get clusterserviceversion -n <namespace>
+2. kubectl delete clusterserviceversion -n <namespace>
 ```

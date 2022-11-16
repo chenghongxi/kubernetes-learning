@@ -69,6 +69,12 @@ kubectl -n olm get deployments
 ```
 ![img](img/deploy.png)
 
+## UnInstall
+```shell
+1. kubectl delete -f olm.yaml
+2. kubectl delete -f crds.yaml
+```
+
 ## Operators
 
 ## 什么是Operators:
@@ -100,10 +106,4 @@ Controller：其实就是控制器真正的用武之地了，它会循环处理�
 [Rabbitmq-Operators](rabbitmq-operators/README.md)
 
 [Postgres-Operators](postgres-Operators/README.md)
-
-## UnInstall
-```shell
-1. kubectl delete -f olm.yaml
-2. kubectl delete -f crds.yaml
-```
 
