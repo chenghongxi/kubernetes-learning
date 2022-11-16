@@ -52,7 +52,7 @@ spec:
     accessModes:
       - ReadWriteOnce
     storageSize: 1Gi
-    storageClass: gp2
+    storageClass: mongodb-storage
   mongoDBSecurity:
     mongoDBAdminUser: admin
     secretRef:

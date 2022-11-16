@@ -40,6 +40,12 @@ https://github.com/rabbitmq/cluster-operator
 ```
 ![img](img/validation.png)
 ## UnInstall
+- `删除步骤 3 中的资源`
 ```shell
-1. kubectl delete -f https://raw.githubusercontent.com/chenghongxi/kubernetes-learning/master/olm/rabbitmq-operators/yml/create-rabbitmq-cluster.yaml
+kubectl delete -f https://raw.githubusercontent.com/chenghongxi/kubernetes-learning/master/olm/rabbitmq-operators/yml/create-rabbitmq-cluster.yaml
+```
+- `删除此 Operator`
+```shell
+1. kubectl delete subscription <subscription-name> -n <namespace>
+2. kubectl get clusterserviceversion -n <namespace>
 ```
