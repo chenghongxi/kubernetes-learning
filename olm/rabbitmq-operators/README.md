@@ -23,7 +23,7 @@ https://www.rabbitmq.com/kubernetes/operator/operator-overview.html
 ![img](img/csv.png)
 
 ```shell
-3. kubectl create -f storage-class.yml
+3. kubectl create -f https://raw.githubusercontent.com/chenghongxi/kubernetes-learning/master/olm/rabbitmq-operators/yml/create-rabbitmq-cluster.yaml
 ```
 ![img](img/storage.png)
 
@@ -46,8 +46,6 @@ https://www.rabbitmq.com/kubernetes/operator/operator-overview.html
 
 ## UnInstall
 ```shell
-1. kubectl delete -f rabbitmq.yaml
-2. kubectl delete -f local-pv.yaml
-3. kubectl delete -f storage-class.yml
-4. kubectl delete -f rabbitmq-cluster-operator.yaml
+1. kubectl delete -f https://raw.githubusercontent.com/chenghongxi/kubernetes-learning/master/olm/rabbitmq-operators/yml/create-rabbitmq-cluster.yaml
+2. kubectl delete csv redis-operator.v0.13.0
 ```
