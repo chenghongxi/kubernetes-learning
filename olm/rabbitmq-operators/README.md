@@ -15,7 +15,7 @@ https://github.com/rabbitmq/cluster-operator
 
 
 ```shell
-1. kubectl create -f https://operatorhub.io/install/rabbitmq-cluster-operator.yaml
+1. kubectl apply -f https://operatorhub.io/install/rabbitmq-cluster-operator.yaml
 ```
 ![img](picture/rabbitmq-cluster-operator.png)
 
@@ -46,6 +46,6 @@ kubectl delete -f https://raw.githubusercontent.com/chenghongxi/kubernetes-learn
 ```
 - `删除此 Operator`
 ```shell
-1. kubectl delete subscription <subscription-name> -n <namespace>
-2. kubectl delete clusterserviceversion -n <namespace>
+1. kubectl delete subscription <subscription-name> -n operators
+2. kubectl delete clusterserviceversion -n operators
 ```

@@ -13,7 +13,7 @@ https://ot-mongodb-operator.netlify.app/
  
 ## Install:
 ```text
-1. kubectl create -f https://operatorhub.io/install/mongodb-operator.yaml
+1. kubectl apply -f https://operatorhub.io/install/mongodb-operator.yaml
 ```
 ![img](picture/mongodb-operator.png)
 
@@ -54,6 +54,6 @@ kubectl delete -f https://raw.githubusercontent.com/chenghongxi/kubernetes-learn
 ```
 - `删除此 Operator`
 ```shell
-1. kubectl delete subscription <subscription-name> -n <namespace>
-2. kubectl delete clusterserviceversion -n <namespace>
+1. kubectl delete subscription <subscription-name> -n operators
+2. kubectl delete clusterserviceversion -n operators
 ```
