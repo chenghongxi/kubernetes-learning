@@ -6,6 +6,17 @@ https://access.crunchydata.com/documentation/postgres-operator/v5/
 ## Github
 https://github.com/CrunchyData/postgres-operator
 
+## Supported Features
+- `集群配置: `
+- `高可用性`
+- `灾难恢复`
+- `监控`
+- `克隆`
+- `TLS`
+- `连接池`
+- `亲和力和容忍度`
+- `完全的可定制性`
+
 ## Rely On
 - `Kubernetes Cluster Version > 1.19.0`
 

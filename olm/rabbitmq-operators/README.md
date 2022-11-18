@@ -8,6 +8,7 @@ https://www.rabbitmq.com/kubernetes/operator/operator-overview.html
 ## GitHub
 https://github.com/rabbitmq/cluster-operator
 
+
 ## Rely on
 - `Kubernetes 1.19.0 cluster`
 

@@ -10,6 +10,16 @@ https://ot-container-kit.github.io/redis-operator/
 ## GitHub
 https://github.com/ot-container-kit/redis-operator
 
+## Supported Features
+- `Redis 集群和独立模式`
+- `Redis 集群故障转移和恢复`
+- `内置 Redis 监控`
+- `Redis 密码设置`
+- `TLS`
+- `支持 Ipv4 和 Ipv6`
+- `支持配置领导者和追随者`
+- `grafana dashboard`
+
 ## Rely on
 - `Kubernetes 1.18.0 cluster`
 

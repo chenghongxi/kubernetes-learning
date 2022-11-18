@@ -12,22 +12,39 @@
 1. 机器配置：4核，8G
 2. Kubernetes Version: v1.23.6
 3. 集群安装方法: https://github.com/caoyingjunz/kubez-ansible
-## 组件介绍:
+## OLM 介绍:
 ```text
 OLM( Operator Lifecycle Manager ) 作为 Operator Framework 的一部分，可以帮助用户进行 Operator 的自动安装，
 升级及其生命周期的管理。同时 OLM 自身也是以 Operator 的形式进行安装部署，可以说它的工作方式是以 Operators 来管理 Operators，
 而它面向 Operator 提供了声明式 ( declarative ) 的自动化管理能力也完全符合 Kubernetes 交互的设计理念。
 ```
 
-## 组件原理:
+## OLM 组件原理:
 ```text
 OLM 由两个 Operator 构成：OLM Operator 和 Catalog Operator
 
 OLM Operator: 负责部署由 CSV 资源定义的应用程序。
 
 Catalog Operator: 负责解析和安装集群服务版本 ( CSV ) 以及它们指定的所需资源。另外还负责监视频道中的目录源中是否有软件包更新，并将其升级（可选择自动）至最新可用版本。
+```
 
-两个Operator其分别管理以下几个基础 CRD 模型：
+## OLM Operators 工作流:
+- `OLM Operator`:
+   - `观察命名空间中的集群服务版本（CSV），并检查是否满足要求。`
+   - `如果满足要求，请运行 CSV 的安装策略。`
+  
+- `Catalog Operator`:
+   - `连接到集群中的每个目录源。`
+   - `监视是否有用户创建的未解析安装计划，如果有:`
+        - `查找与请求名称相匹配的 CSV，并将此 CSC 添加为已解析的资源。`
+        - `对于每个受管或所需 CRD，将其添加为已解析的资源。`
+        - `对于每个所需 CRD，找到管理相应 CRD 的 CSV。`
+   - `监视是否有已解析的安装计划并为其创建已发现的所有资源（用户批准或自动）。`
+   - `观察目录源和订阅并根据它们创建安装计划。`
+
+## 基础模型：
+```text
+两个 Operator 其分别管理以下几个资源：
 ```
 
 ![img.png](picture/1.jpg)
