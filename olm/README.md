@@ -91,7 +91,7 @@ kubectl get deploy,svc,secret -n olm
 ```
 ![img](picture/deploy.png)
 
-## UnInstall
+## OLM UnInstall
 ```shell
 1. kubectl delete -f olm.yaml
 2. kubectl delete -f crds.yaml
