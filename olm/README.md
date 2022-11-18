@@ -58,7 +58,7 @@ Catalog Operator: 负责解析和安装集群服务版本 ( CSV ) 以及它们�
 OLM 可以帮助用户，安装，更新，和管理所有Operator ( 如: redis-operator , mongodb-operator ) 的生命周期.
 
 
-### Install:
+### OLM Install:
 - `Scripted`
 ```shell
 curl -L https://github.com/operator-framework/operator-lifecycle-manager/releases/download/v0.19.1/install.sh -o install.sh
