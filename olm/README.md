@@ -23,9 +23,9 @@ OLM( Operator Lifecycle Manager ) 作为 Operator Framework 的一部分，可�
 ```text
 OLM 由两个 Operator 构成：OLM Operator 和 Catalog Operator
 
-OLM Operator: 负责部署由 CSV 资源定义的应用程序。
+OLM Operator: 工作基于 ClusterServiceVersion，一旦 CSV 中声明的依赖资源在目标集群中注册成功，OLM Operator 将负责安装这些资源对应的应用实例。
 
-Catalog Operator: 负责解析和安装集群服务版本 ( CSV ) 以及它们指定的所需资源。另外还负责监视频道中的目录源中是否有软件包更新，并将其升级（可选择自动）至最新可用版本。
+Catalog Operator: 主要负责解析 CSV 中声明的依赖资源定义，同时通过监听 catalog 中安装包对应 channels 的版本定义完成 CSV 对应的版本更新。
 ```
 
 ## OLM 工作流:
@@ -87,7 +87,7 @@ kubectl get ns
 ```
 ![img](picture/ns.png)
 ```text
-kubectl -n olm get deployments
+kubectl get deploy,svc,secret -n olm
 ```
 ![img](picture/deploy.png)
 
