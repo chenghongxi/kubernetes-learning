@@ -32,6 +32,12 @@ Catalog Operator: 负责解析和安装集群服务版本 ( CSV ) 以及它们�
 - `OLM Operator`:
    - `观察命名空间中的集群服务版本（CSV），并检查是否满足要求。`
    - `如果满足要求，请运行 CSV 的安装策略。`
+       - `创建 Subscription 对象`
+       - `Subscription 对象从 Catalog source 获取可用版本`
+       - `Subscription 会创建一个 Install 对象为 Operator 安装资源,根据批准策略来批准安装计划:`
+            - `如果 Subscription 的 spec.installPlanApproval 字段被设置为 Automatic，则会自动批准安装计划。`
+            - `如果 Subscription 的 spec.installPlanApproval 字段被设置为 Manual，则安装计划必须由集群管理员或具有适当权限的用户手动批准。`
+       - `批准安装计划后，OLM 会创建指定的资源，并在 Subscription 指定的命名空间中安装 Operator。`
   
 - `Catalog Operator`:
    - `连接到集群中的每个目录源。`
@@ -114,7 +120,7 @@ Controller：其实就是控制器真正的用武之地了，它会循环处理�
 一旦发现不符合期望的状态就会继续协调，就一直保持基于事件的机制，不断检查和协调，去保证期望的状态。
 ```
 
-## Application
+## Application-Example
 
 [Redis-Operators](redis-operators/README.md)
 
