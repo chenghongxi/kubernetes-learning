@@ -28,7 +28,7 @@ OLM Operator: 负责部署由 CSV 资源定义的应用程序。
 Catalog Operator: 负责解析和安装集群服务版本 ( CSV ) 以及它们指定的所需资源。另外还负责监视频道中的目录源中是否有软件包更新，并将其升级（可选择自动）至最新可用版本。
 ```
 
-## OLM Operators 工作流:
+## OLM 工作流:
 - `OLM Operator`:
    - `观察命名空间中的集群服务版本（CSV），并检查是否满足要求。`
    - `如果满足要求，请运行 CSV 的安装策略。`
@@ -38,7 +38,6 @@ Catalog Operator: 负责解析和安装集群服务版本 ( CSV ) 以及它们�
             - `如果 Subscription 的 spec.installPlanApproval 字段被设置为 Automatic，则会自动批准安装计划。`
             - `如果 Subscription 的 spec.installPlanApproval 字段被设置为 Manual，则安装计划必须由集群管理员或具有适当权限的用户手动批准。`
        - `批准安装计划后，OLM 会创建指定的资源，并在 Subscription 指定的命名空间中安装 Operator。`
-  
 - `Catalog Operator`:
    - `连接到集群中的每个目录源。`
    - `监视是否有用户创建的未解析安装计划，如果有:`
@@ -48,7 +47,7 @@ Catalog Operator: 负责解析和安装集群服务版本 ( CSV ) 以及它们�
    - `监视是否有已解析的安装计划并为其创建已发现的所有资源（用户批准或自动）。`
    - `观察目录源和订阅并根据它们创建安装计划。`
 
-## 基础模型：
+## OLM 基础模型：
 ```text
 两个 Operator 其分别管理以下几个资源：
 ```
