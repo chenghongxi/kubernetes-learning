@@ -31,7 +31,7 @@ Catalog Operator: 主要负责解析 CSV 中声明的依赖资源定义，同时
 ## OLM 工作流:
 - `OLM Operator`:
    - `观察命名空间中的集群服务版本（CSV），并检查是否满足要求。`
-   - `如果满足要求，请运行 CSV 的安装策略。`
+   - `如果满足要求，请运行 CSV 的安装策略,如下: 。`
        - `创建 Subscription 对象`
        - `Subscription 对象从 Catalog source 获取可用版本`
        - `Subscription 会创建一个 Install 对象为 Operator 安装资源,根据批准策略来批准安装计划:`
@@ -49,7 +49,7 @@ Catalog Operator: 主要负责解析 CSV 中声明的依赖资源定义，同时
 
 ## OLM 基础模型：
 ```text
-两个 Operator 其分别管理以下几个资源：
+两个 Operator 其分别管理以下几个资源模型:
 ```
 
 ![img.png](picture/1.jpg)
