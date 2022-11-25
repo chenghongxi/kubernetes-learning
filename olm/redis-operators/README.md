@@ -33,8 +33,23 @@ https://github.com/ot-container-kit/redis-operator
 ```
 ![img](picture/redis-operators.png)
 
+#### `安装过程解析`
+- 创建 `Subscription` 对象
+![img](picture/redis-operator-yaml.png)
 
-[redis-operator.yaml](https://operatorhub.io/install/redis-operator.yaml)
+- `Subscription` 对象从 `Catalog source` 获取可用版本
+    - `metadaata.generation` 初始值为1:  随着 `spec` 内容的改变而自增
+    - `spec.image` 此镜像用于, 实例化一个 `registry-serve`
+    - `spec.publisher` 发行商
+    - `spec.sourceType` 源类型
+![img](picture/catsrc.png)
+- `Subscription`会创建一个 `Install` 对象为 `Operator` 安装资源,根据批准策略来批准安装计划:
+  - `如果 Subscription 的 spec.approval 字段被设置为 Automatic，则会自动批准安装计划。`
+  - `如果 Subscription 的 spec.approval 字段被设置为 Manual，则安装计划必须由集群管理员或具有适当权限的用户手动批准。`
+- `批准安装计划后，OLM 会创建指定的资源，并在 Subscription 指定的命名空间中安装 Operator。`
+
+
+
 
 ```shell
 2. kubectl get csv -n operators
