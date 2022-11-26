@@ -33,10 +33,6 @@ https://github.com/CrunchyData/postgres-operator
 - [redis-operator](https://github.com/chenghongxi/kubernetes-learning/blob/master/olm/redis-operators/README.md#%E5%AE%89%E8%A3%85%E8%BF%87%E7%A8%8B%E8%A7%A3%E6%9E%90)
 
 
-
-
-[postgresql.yaml](https://operatorhub.io/install/postgresql.yaml)
-
 ```shell
 2. kubectl get csv -n operators
 ```
