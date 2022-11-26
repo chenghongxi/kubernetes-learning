@@ -19,9 +19,9 @@ https://ot-mongodb-operator.netlify.app/
 
 #### `安装过程解析`
 - 原理同 `redis-operator`
-```shell
-https://github.com/chenghongxi/kubernetes-learning/blob/master/olm/redis-operators/README.md#%E5%AE%89%E8%A3%85%E8%BF%87%E7%A8%8B%E8%A7%A3%E6%9E%90`
-```
+
+- [redis-operator](https://github.com/chenghongxi/kubernetes-learning/blob/master/olm/redis-operators/README.md#%E5%AE%89%E8%A3%85%E8%BF%87%E7%A8%8B%E8%A7%A3%E6%9E%90)
+
 
 ```shell
 2. kubectl get csv -n operators
