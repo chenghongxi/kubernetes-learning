@@ -28,6 +28,17 @@ OLM Operator: 工作基于 ClusterServiceVersion，一旦 CSV 中声明的依赖
 Catalog Operator: 主要负责解析 CSV 中声明的依赖资源定义，同时通过监听 catalog 中安装包对应 channels 的版本定义完成 CSV 对应的版本更新。
 ```
 
+## OLM 基础模型：
+```text
+OLM Operator, Catalog Operator 其分别管理以下几个资源模型:
+```
+
+![img.png](picture/1.jpg)
+
+## 使用场景:
+OLM 可以帮助用户，安装，更新，和管理所有Operator ( 如: redis-operator , mongodb-operator ) 的生命周期.
+
+
 ## OLM 工作流:
 - `OLM Operator`:
    - `观察命名空间中的集群服务版本（CSV），并检查是否满足要求。`
@@ -47,16 +58,7 @@ Catalog Operator: 主要负责解析 CSV 中声明的依赖资源定义，同时
    - `监视是否有已解析的安装计划并为其创建已发现的所有资源（用户批准或自动）。`
    - `观察目录源和订阅并根据它们创建安装计划。`
 
-## OLM 基础模型：
-```text
-两个 Operator 其分别管理以下几个资源模型:
-```
-
-![img.png](picture/1.jpg)
-
-## 使用场景:
-OLM 可以帮助用户，安装，更新，和管理所有Operator ( 如: redis-operator , mongodb-operator ) 的生命周期.
-
+    
 
 ### OLM Install:
 - `Scripted`
