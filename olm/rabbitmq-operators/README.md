@@ -20,8 +20,10 @@ https://github.com/rabbitmq/cluster-operator
 ```
 ![img](picture/rabbitmq-cluster-operator.png)
 
+#### `安装过程解析`
+- ``
 
-[rabbitmq-cluster-operator.yaml](yml/rabbitmq-cluster-operator.yaml)
+
 
 ```shell
 2. kubectl get csv -n operators

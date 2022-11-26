@@ -46,7 +46,8 @@ https://github.com/ot-container-kit/redis-operator
 - `Subscription`会创建一个 `Install` 对象为 `Operator` 安装资源,根据批准策略来批准安装计划:
   - `如果 Subscription 的 spec.approval 字段被设置为 Automatic，则会自动批准安装计划。`
   - `如果 Subscription 的 spec.approval 字段被设置为 Manual，则安装计划必须由集群管理员或具有适当权限的用户手动批准。`
-- `批准安装计划后，OLM 会创建指定的资源，并在 Subscription 指定的命名空间中安装 Operator。`
+    - `批准安装计划后，OLM 会创建指定的资源，并在 Subscription 指定的命名空间中安装 Operator。`
+      ![img](picture/ip-yaml.png)
 
 
 
