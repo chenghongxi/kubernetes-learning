@@ -6,7 +6,7 @@
 
 ## Rely on
 - `kubectl v1.11.3+`
-- `Kubernetes v1.11.3+ cluster`
+- `Kubernetes v1.17+ cluster`
 
 ## Environment version
 1. 机器配置：4核，8G
