@@ -26,8 +26,6 @@ spec:
     imagePullPolicy: IfNotPresent
   storage:
     volumeClaimTemplate:
-      metadata:
-        name: redis
       spec:
         accessModes:
           - ReadWriteOnce
