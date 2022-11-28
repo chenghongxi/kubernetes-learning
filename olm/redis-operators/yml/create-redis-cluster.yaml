@@ -93,32 +93,6 @@ spec:
     enabled: true
     image: 'quay.io/opstree/redis-exporter:v1.44.0'
     imagePullPolicy: IfNotPresent
-  # redis 领导者
-  redisLeader:
-    redisConfig:
-      additionalRedisConfig: redis-external-config
-    affinity:
-      nodeAffinity:
-        requiredDuringSchedulingIgnoredDuringExecution:
-          nodeSelectorTerms:
-            - matchExpressions:
-                - key: disktype
-                  operator: In
-                  values:
-                    - ssd
-  # redis 追随者
-  redisFollower:
-    redisConfig:
-      additionalRedisConfig: redis-external-config
-    affinity:
-      nodeAffinity:
-        requiredDuringSchedulingIgnoredDuringExecution:
-          nodeSelectorTerms:
-            - matchExpressions:
-                - key: disktype
-                  operator: In
-                  values:
-                    - ssd
   storage:
     volumeClaimTemplate:
       spec:
