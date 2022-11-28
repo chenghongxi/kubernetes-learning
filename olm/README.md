@@ -93,6 +93,12 @@ kubectl get deploy,svc,secret -n olm
 ```
 ![img](picture/deploy.png)
 
+#### 查看可安装的 `Operators`
+```shell
+kubectl get packagemanifests
+```
+![img](picture/packagemanifests.png)
+
 ## OLM UnInstall
 ```shell
 1. kubectl delete -f olm.yaml
