@@ -2,32 +2,9 @@
 kind: StorageClass
 apiVersion: storage.k8s.io/v1
 metadata:
-  name: redis-storage
+  name: redis-standard
 provisioner: kubernetes.io/no-provisioner
 volumeBindingMode: WaitForFirstConsumer
----
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: redis-pv
-spec:
-  capacity:
-    storage: 6Gi
-  volumeMode: Filesystem
-  accessModes:
-    - ReadWriteOnce
-  persistentVolumeReclaimPolicy: Delete
-  storageClassName: redis-storage
-  local:
-    path: /mnt
-  nodeAffinity:
-    required:
-      nodeSelectorTerms:
-        - matchExpressions:
-            - key: kubernetes.io/hostname
-              operator: In
-              values:
-                - pixiu01 # 这里根据官网例子，要设置亲和性，改成节点名
 ---
 apiVersion: redis.redis.opstreelabs.in/v1beta1
 kind: RedisCluster
@@ -52,6 +29,7 @@ spec:
       spec:
         accessModes:
           - ReadWriteOnce
+        storageClassName: redis-standard
         resources:
           requests:
             storage: 1Gi
