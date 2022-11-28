@@ -30,7 +30,8 @@ spec:
         accessModes:
           - ReadWriteOnce
         volumeName: redis
-        storageClassName: redis-standard
+        volumeMode: Filesystem
+        storageClassName: 'redis-standard'
         resources:
           requests:
             storage: 1Gi
