@@ -12,7 +12,7 @@ metadata:
   name: redis-pv
 spec:
   capacity:
-    storage: 3Gi
+    storage: 6Gi
   volumeMode: Filesystem
   accessModes:
     - ReadWriteOnce
@@ -30,20 +30,23 @@ spec:
                 - pixiu01 # 这里根据官网例子，要设置亲和性，改成节点名
 ---
 apiVersion: redis.redis.opstreelabs.in/v1beta1
-kind: Redis
+kind: RedisCluster
 metadata:
-  name: redis-standalone
+  name: redis-cluster
 spec:
+  clusterSize: 3
+  clusterVersion: v7
+  securityContext:
+    runAsUser: 1000
+    fsGroup: 1000
+  persistenceEnabled: true
   kubernetesConfig:
-    image: 'quay.io/opstree/redis:v6.2.5'
+    image: 'quay.io/opstree/redis:v7.0.5'
     imagePullPolicy: IfNotPresent
-    resources:
-      requests:
-        cpu: 101m
-        memory: 128Mi
-      limits:
-        cpu: 101m
-        memory: 128Mi
+  redisExporter:
+    enabled: true
+    image: 'quay.io/opstree/redis-exporter:v1.44.0'
+    imagePullPolicy: IfNotPresent
   storage:
     volumeClaimTemplate:
       spec:
@@ -53,6 +56,3 @@ spec:
         resources:
           requests:
             storage: 1Gi
-  redisExporter:
-    enabled: false
-    image: 'quay.io/opstree/redis-exporter:1.0'
