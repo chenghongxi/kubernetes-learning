@@ -2,14 +2,14 @@
 kind: StorageClass
 apiVersion: storage.k8s.io/v1
 metadata:
-  name: redis-storage
+  name: postgres-storage
 provisioner: kubernetes.io/no-provisioner
 volumeBindingMode: WaitForFirstConsumer
 ---
 kind: StorageClass
 apiVersion: storage.k8s.io/v1
 metadata:
-  name: backups-redis-storage
+  name: backups-postgres-storage
 provisioner: kubernetes.io/no-provisioner
 volumeBindingMode: WaitForFirstConsumer
 ---
@@ -24,7 +24,7 @@ spec:
   accessModes:
     - ReadWriteOnce
   persistentVolumeReclaimPolicy: Delete
-  storageClassName: redis-storage
+  storageClassName: postgres-storage
   local:
     path: /mnt
   nodeAffinity:
@@ -47,7 +47,7 @@ spec:
   accessModes:
     - ReadWriteOnce
   persistentVolumeReclaimPolicy: Delete
-  storageClassName: backups-redis-storage
+  storageClassName: backups-postgres-storage
   local:
     path: /mnt
   nodeAffinity:
@@ -72,7 +72,7 @@ spec:
       dataVolumeClaimSpec:
         accessModes:
           - "ReadWriteOnce"
-        storageClassName: "redis-storage"
+        storageClassName: "postgres-storage"
         resources:
           requests:
             storage: 1Gi
@@ -85,7 +85,7 @@ spec:
             volumeClaimSpec:
               accessModes:
                 - "ReadWriteOnce"
-              storageClassName: "backups-redis-storage"
+              storageClassName: "backups-postgres-storage"
               resources:
                 requests:
                   storage: 1Gi
