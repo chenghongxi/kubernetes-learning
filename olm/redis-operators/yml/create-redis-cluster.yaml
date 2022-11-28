@@ -26,12 +26,12 @@ spec:
     imagePullPolicy: IfNotPresent
   storage:
     volumeClaimTemplate:
-      - metadata:
+      metadata:
           name: redis
-        spec:
-          accessModes:
-            - ReadWriteOnce
-          storageClassName: redis-standard
-          resources:
-            requests:
-              storage: 1Gi
+      spec:
+        accessModes:
+          - ReadWriteOnce
+        storageClassName: redis-standard
+        resources:
+          requests:
+            storage: 1Gi
