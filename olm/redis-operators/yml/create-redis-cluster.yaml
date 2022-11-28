@@ -34,7 +34,7 @@ kind: RedisCluster
 metadata:
   name: redis-cluster
 spec:
-  clusterSize: 1
+  clusterSize: 2
   clusterVersion: v7
   securityContext:
     runAsUser: 1000
