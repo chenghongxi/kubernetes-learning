@@ -52,7 +52,6 @@ spec:
       spec:
         accessModes:
           - ReadWriteOnce
-        storageClassName: "redis-storage"
         resources:
           requests:
             storage: 1Gi
