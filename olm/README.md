@@ -38,27 +38,7 @@ OLM Operator, Catalog Operator 其分别管理如下 CRD :
 ## 使用场景:
 OLM 可以帮助用户，安装，更新，和管理所有Operator ( 如: redis-operator , mongodb-operator ) 的生命周期.
 
-
-## OLM 工作流:
-- `OLM Operator`:
-   - `观察命名空间中的集群服务版本（CSV），并检查是否满足要求。`
-   - `如果满足要求，请运行 CSV 的安装策略,如下: 。`
-       - `创建 Subscription 对象`
-       - `Subscription 对象从 Catalog source 获取可用版本`
-       - `Subscription 会创建一个 Install 对象为 Operator 安装资源,根据批准策略来批准安装计划:`
-            - `如果 Subscription 的 spec.approval 字段被设置为 Automatic，则会自动批准安装计划。`
-            - `如果 Subscription 的 spec.approval 字段被设置为 Manual，则安装计划必须由集群管理员或具有适当权限的用户手动批准。`
-       - `批准安装计划后，OLM 会创建指定的资源，并在 Subscription 指定的命名空间中安装 Operator。`
-- `Catalog Operator`:
-   - `连接到集群中的每个目录源。`
-   - `监视是否有用户创建的未解析安装计划，如果有:`
-        - `查找与请求名称相匹配的 CSV，并将此 CSC 添加为已解析的资源。`
-        - `对于每个受管或所需 CRD，将其添加为已解析的资源。`
-        - `对于每个所需 CRD，找到管理相应 CRD 的 CSV。`
-   - `监视是否有已解析的安装计划并为其创建已发现的所有资源（用户批准或自动）。`
-   - `观察目录源和订阅并根据它们创建安装计划。`
-
-    
+   
 
 ### OLM Install:
 - `Scripted`
@@ -93,7 +73,7 @@ kubectl get deploy,svc,secret -n olm
 ```
 ![img](picture/deploy.png)
 
-#### 查看可安装的 `Operators`
+#### 查看`OLM` 可安装的 `Operators`
 ```shell
 kubectl get packagemanifests
 ```
