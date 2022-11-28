@@ -30,7 +30,7 @@ Catalog Operator: 主要负责解析 CSV 中声明的依赖资源定义，同时
 
 ## OLM 基础模型：
 ```text
-OLM Operator, Catalog Operator 其分别管理以下几个资源模型:
+OLM Operator, Catalog Operator 其分别管理如下 CRD :
 ```
 
 ![img.png](picture/1.jpg)
@@ -98,6 +98,12 @@ kubectl get deploy,svc,secret -n olm
 kubectl get packagemanifests
 ```
 ![img](picture/packagemanifests.png)
+
+##### 重要提示:
+- `Operators` 在集群的所有命名空间都可用, 如下图:
+    ![img](picture/allcsv.png)
+- 这个行为由 `OperatorGroup` 控制
+    ![img](picture/targetnamespace.png)
 
 ## OLM UnInstall
 ```shell
