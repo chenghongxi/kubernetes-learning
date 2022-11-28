@@ -27,10 +27,11 @@ spec:
   storage:
     volumeClaimTemplate:
       metadata:
-          name: redis
+        name: redis
       spec:
         accessModes:
           - ReadWriteOnce
+        volumeName: redis
         storageClassName: redis-standard
         resources:
           requests:
