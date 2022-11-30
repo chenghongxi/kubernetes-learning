@@ -41,7 +41,7 @@ https://github.com/CrunchyData/postgres-operator
     - `status.connectionState.lastObservedState` READY: 成功建立连接。
 
       ![img](picture/catsrc.png)
-- `Subscription`会创建一个 `Install` 对象为 `Operator` 安装资源,根据批准策略来批准安装计划:
+- `Subscription`会创建一个 `InstallPlan` 对象为 `Operator` 安装资源,根据批准策略来批准安装计划:
     - `如果 Subscription 的 spec.approval 字段被设置为 
     - Automatic，则会自动批准安装计划。`
     - `如果 Subscription 的 spec.approval 字段被设置为 Manual，则安装计划必须由集群管理员或具有适当权限的用户手动批准。`
