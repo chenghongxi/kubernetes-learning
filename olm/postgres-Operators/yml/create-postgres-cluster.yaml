@@ -26,7 +26,7 @@ spec:
   persistentVolumeReclaimPolicy: Delete
   storageClassName: postgres-storage
   local:
-    path: /mnt
+    path: /postgres-operators
   nodeAffinity:
     required:
       nodeSelectorTerms:
@@ -49,7 +49,7 @@ spec:
   persistentVolumeReclaimPolicy: Delete
   storageClassName: backups-postgres-storage
   local:
-    path: /mnt
+    path: /postgres-operators
   nodeAffinity:
     required:
       nodeSelectorTerms:
