@@ -29,18 +29,18 @@ https://github.com/CrunchyData/postgres-operator
 
 #### `安装过程解析`
 - 创建 `Subscription` 对象
-  ![img](picture/my-postgres.png
+  ![img](picture/my-postgres.png)
     - `Subscription` 对象从 `Catalog source` 获取可用版本
     - `metadaata.generation` 初始值为1:  随着 `spec` 内容的改变而自增
     - `spec.image` 此镜像用于, 实例化一个 `registry-serve`
     - `spec.publisher` 发行商
     - `spec.sourceType` 源类型
-      ![img](picture/catsrc.png)
+     ![img](picture/catsrc.png)
 - `Subscription`会创建一个 `Install` 对象为 `Operator` 安装资源,根据批准策略来批准安装计划:
     - `如果 Subscription 的 spec.approval 字段被设置为 Automatic，则会自动批准安装计划。`
     - `如果 Subscription 的 spec.approval 字段被设置为 Manual，则安装计划必须由集群管理员或具有适当权限的用户手动批准。`
         - `批准安装计划后，OLM 会创建指定的资源，并在 Subscription 指定的命名空间中安装 Operator。`
-          ![img](picture/ip-yaml.png)
+        ![img](picture/ip-yaml.png)
 
 
 - [redis-operator](https://github.com/chenghongxi/kubernetes-learning/blob/master/olm/redis-operators/README.md#%E5%AE%89%E8%A3%85%E8%BF%87%E7%A8%8B%E8%A7%A3%E6%9E%90)
