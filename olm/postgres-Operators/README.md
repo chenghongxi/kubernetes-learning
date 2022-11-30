@@ -29,6 +29,7 @@ https://github.com/CrunchyData/postgres-operator
 
 #### `安装过程解析`
 - 创建 `Subscription` 对象
+
   ![img](picture/my-postgres.png)
     - `Subscription` 对象从 `Catalogsource` 获取可用版本,通过引用存储在容器 registry 中的 index image
     - `metadaata.generation` 初始值为1:  随着 `spec` 内容的改变而自增

@@ -80,7 +80,7 @@ kubectl get packagemanifests
 ![img](picture/packagemanifests.png)
 
 ##### 重要提示:
-- `Operators` 在集群的所有命名空间都可用, 如下图:
+- `ClusterServiceVersion` 在集群的所有命名空间都可用, 如下图:
     ![img](picture/allcsv.png)
 - 这个行为由 `OperatorGroup` 控制
     ![img](picture/targetnamespace.png)
