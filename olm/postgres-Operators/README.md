@@ -30,14 +30,19 @@ https://github.com/CrunchyData/postgres-operator
 #### `安装过程解析`
 - 创建 `Subscription` 对象
   ![img](picture/my-postgres.png)
-    - `Subscription` 对象从 `Catalog source` 获取可用版本
+    - `Subscription` 对象从 `Catalogsource` 获取可用版本,通过引用存储在容器 registry 中的 index image
     - `metadaata.generation` 初始值为1:  随着 `spec` 内容的改变而自增
-    - `spec.image` 此镜像用于, 实例化一个 `registry-serve`
-    - `spec.publisher` 发行商
-    - `spec.sourceType` 源类型
-     ![img](picture/catsrc.png)
+    - `spec` 字段指明了如何构造 `pod` , 以及如何与 Operator Registry gRPC API 进行通信
+    - `spec.image` 目录的索引镜像
+  
+    - `spec.sourceType` 源类型,当`spec.image` 为索引镜像时，OLM 拉取镜像并运行 pod，为兼容的 API 服务。
+    - `spec.updateStrategy.registryPoll` 在指定的时间段内自动检查新版本以保持最新。
+    - `status.connectionState.lastObservedState` READY: 成功建立连接。
+
+      ![img](picture/catsrc.png)
 - `Subscription`会创建一个 `Install` 对象为 `Operator` 安装资源,根据批准策略来批准安装计划:
-    - `如果 Subscription 的 spec.approval 字段被设置为 Automatic，则会自动批准安装计划。`
+    - `如果 Subscription 的 spec.approval 字段被设置为 
+    - Automatic，则会自动批准安装计划。`
     - `如果 Subscription 的 spec.approval 字段被设置为 Manual，则安装计划必须由集群管理员或具有适当权限的用户手动批准。`
         - `批准安装计划后，OLM 会创建指定的资源，并在 Subscription 指定的命名空间中安装 Operator。`
         ![img](picture/ip-yaml.png)
