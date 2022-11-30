@@ -60,7 +60,7 @@ https://github.com/ot-container-kit/redis-operator
 ```shell
 3. kubectl apply -f https://raw.githubusercontent.com/chenghongxi/kubernetes-learning/master/olm/redis-operators/yml/create-redis-cluster.yaml
 ```
-![img](picture/create-redis-cluster.png)
+![img](picture/create-redis-cluster1.png)
 
 
 [create-redis-cluster.yaml](https://raw.githubusercontent.com/chenghongxi/kubernetes-learning/master/olm/redis-operators/yml/create-redis-cluster.yaml)
@@ -68,16 +68,15 @@ https://github.com/ot-container-kit/redis-operator
 
 ## Validation
 ```shell
-1. kubectl get sc,pv,pvc,po
+1. kubectl get sc,pv,po
 ```
-![img](picture/get-redis-cluster.png)
+![img](picture/get-cluster.png)
 ```text
-2. kubectl exec -it redis-standalone-0 -- /bin/bash
-3. redis-cli -c
-4. set k1 v1
-5. get k1
+2. kubectl exec -it redis-cluster-leader-0 -- redis-cli -c cluster nodes
 ```
-![img](picture/exec-redis.png)
+![img](picture/cluster-nodes.png)
+![img](picture/set.png)
+
 
 ## UnInstall
 - `删除步骤 3 中的资源`
