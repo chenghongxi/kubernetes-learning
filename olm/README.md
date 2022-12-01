@@ -5,7 +5,6 @@
 - `Operatorhub`: https://operatorhub.io/
 
 ## Rely on
-- `kubectl v1.11.3+`
 - `Kubernetes v1.17+ cluster`
 
 ## Environment version
