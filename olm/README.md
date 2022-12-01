@@ -9,7 +9,7 @@
 
 ## Environment version
 1. 机器配置：4核，8G
-2. Kubernetes Version: v1.21
+2. Kubernetes Version: v1.21  单节点
 3. 集群安装方法: https://github.com/caoyingjunz/kubez-ansible
 ## OLM 介绍:
 ```text
