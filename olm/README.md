@@ -93,13 +93,23 @@ kubectl get packagemanifests
 
 ## Operators
 
-## 什么是Operators:
+### Rely on
+
+- `Kubernetes v1.17+ cluster`
+
+
+### Operators 是什么:
 ```text
 简单来说，Operators 就是一组自定义控制器的集合以及由这些控制器管理着的一系列自定义资源，我们将不在关注于 pod，configmap 等基本模型元素，
 而是将他们聚合为一个应用或服务，Operator 通过控制器的协调循环来使自定义应用达到我们期望的状态，我们只需要关注该应用的期望状态，通过自定义控制器协调循环逻辑，
 来达到安装，更新，扩展，备份，恢复 7*24 小时不间断的应用或服务的生命周期管理。
 ```
-## Operators对象:
+
+### Operator 解决了那些问题:
+```text
+解决数据库等复杂应用容器化问题的模式, 对复杂的有状态应用，如数据库、缓存和监控系统等，进行创建、配置和管理。
+```
+### Operators 对象:
 ```
 CRD:自定义资源的定义，Kubernetes API 服务器会为你所指定的每一个 CRD 版本生成 RESTful 的资源路径。一个 CRD 其实就是定义自己应用业务模型的地方，
 可以根据业务的需求，完全定制自己所需要的资源对象，如 RedisCluster, PrometheusServer 等这些都是可以被 Kubernetes 直接操作和管理的自定义的资源对象。
@@ -113,7 +123,7 @@ Controller：其实就是控制器真正的用武之地了，它会循环处理�
 一旦发现不符合期望的状态就会继续协调，就一直保持基于事件的机制，不断检查和协调，去保证期望的状态。
 ```
 
-## Application-Example
+### Application-Example
 
 [Redis-Operators](redis-operators/README.md)
 
