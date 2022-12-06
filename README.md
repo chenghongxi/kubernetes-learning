@@ -1,6 +1,6 @@
 # kubernetes-learning
 
-## Operator Lifecycle Manager
+## Operator Lifecycle Manager ( OLM )
 
 - [OLM](olm/README.md)
 
