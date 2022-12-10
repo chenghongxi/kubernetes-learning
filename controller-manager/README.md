@@ -14,6 +14,7 @@ Github: https://github.com/kubernetes/kubernetes
 [Controller](https://github.com/kubernetes/kubernetes/tree/master/pkg/controller)
 - `从代码中`:
 ```go
+        ## endpoint Controller
         register("endpoint", startEndpointController)
 	register("endpointslice", startEndpointSliceController)
 	register("endpointslicemirroring", startEndpointSliceMirroringController)
@@ -23,8 +24,10 @@ Github: https://github.com/kubernetes/kubernetes
 	register("resourcequota", startResourceQuotaController)
         ## 命名空间 Controller
 	register("namespace", startNamespaceController 
+	## sa Controller
 	register("serviceaccount", startServiceAccountController)
 	register("garbagecollector", startGarbageCollectorController)
+	## 有状态 Controller
 	register("daemonset", startDaemonSetController)
 	## job Controller
 	register("job", startJobController)
@@ -34,6 +37,7 @@ Github: https://github.com/kubernetes/kubernetes
 	register("horizontalpodautoscaling", startHPAController)
 	register("disruption", startDisruptionController)
 	register("statefulset", startStatefulSetController)
+	## crontab Controller
 	register("cronjob", startCronJobController)
 	register("csrsigning", startCSRSigningController)
 	register("csrapproving", startCSRApprovingController)
