@@ -254,8 +254,103 @@ func Run(c *config.CompletedConfig, stopCh <-chan struct{}) error {
 	return nil
 }
 ```
+NewControllerInitializers函数: https://github.com/kubernetes/kubernetes/blob/master/cmd/kube-controller-manager/app/controllermanager.go#L423
+- `1. NewControllerInitializers 是与其 InitFunc 配对的命名控制器组的公共映射`
+- `2. 可以在 initFunc 中启动多个控制器组这允许结构化的下游组成和细分`
+- `3. 此函数完成了，下游controller的相关注册`
+```text
+func NewControllerInitializers(loopMode ControllerLoopMode) map[string]InitFunc {
+	controllers := map[string]InitFunc{}
 
+	// All of the controllers must have unique names, or else we will explode.
+	register := func(name string, fn InitFunc) {
+		if _, found := controllers[name]; found {
+			panic(fmt.Sprintf("controller name %q was registered twice", name))
+		}
+		controllers[name] = fn
+	}
 
+	register("endpoint", startEndpointController)
+	register("endpointslice", startEndpointSliceController)
+	register("endpointslicemirroring", startEndpointSliceMirroringController)
+	register("replicationcontroller", startReplicationController)
+	register("podgc", startPodGCController)
+	register("resourcequota", startResourceQuotaController)
+	register("namespace", startNamespaceController)
+	register("serviceaccount", startServiceAccountController)
+	register("garbagecollector", startGarbageCollectorController)
+	register("daemonset", startDaemonSetController)
+	register("job", startJobController)
+	register("deployment", startDeploymentController)
+	register("replicaset", startReplicaSetController)
+	register("horizontalpodautoscaling", startHPAController)
+	register("disruption", startDisruptionController)
+	register("statefulset", startStatefulSetController)
+	register("cronjob", startCronJobController)
+	register("csrsigning", startCSRSigningController)
+	register("csrapproving", startCSRApprovingController)
+	register("csrcleaner", startCSRCleanerController)
+	register("ttl", startTTLController)
+	register("bootstrapsigner", startBootstrapSignerController)
+	register("tokencleaner", startTokenCleanerController)
+	register("nodeipam", startNodeIpamController)
+	register("nodelifecycle", startNodeLifecycleController)
+	if loopMode == IncludeCloudLoops {
+		register("service", startServiceController)
+		register("route", startRouteController)
+		register("cloud-node-lifecycle", startCloudNodeLifecycleController)
+		// TODO: volume controller into the IncludeCloudLoops only set.
+	}
+	register("persistentvolume-binder", startPersistentVolumeBinderController)
+	register("attachdetach", startAttachDetachController)
+	register("persistentvolume-expander", startVolumeExpandController)
+	register("clusterrole-aggregation", startClusterRoleAggregrationController)
+	register("pvc-protection", startPVCProtectionController)
+	register("pv-protection", startPVProtectionController)
+	register("ttl-after-finished", startTTLAfterFinishedController)
+	register("root-ca-cert-publisher", startRootCACertPublisher)
+	register("ephemeral-volume", startEphemeralVolumeController)
+	if utilfeature.DefaultFeatureGate.Enabled(genericfeatures.APIServerIdentity) &&
+		utilfeature.DefaultFeatureGate.Enabled(genericfeatures.StorageVersionAPI) {
+		register("storage-version-gc", startStorageVersionGCController)
+	}
+	if utilfeature.DefaultFeatureGate.Enabled(kubefeatures.DynamicResourceAllocation) {
+		controllers["resource-claim-controller"] = startResourceClaimController
+	}
+
+	return controllers
+}
+
+// GetAvailableResources gets the map which contains all available resources of the apiserver
+// TODO: In general, any controller checking this needs to be dynamic so
+// users don't have to restart their controller manager if they change the apiserver.
+// Until we get there, the structure here needs to be exposed for the construction of a proper ControllerContext.
+func GetAvailableResources(clientBuilder clientbuilder.ControllerClientBuilder) (map[schema.GroupVersionResource]bool, error) {
+	client := clientBuilder.ClientOrDie("controller-discovery")
+	discoveryClient := client.Discovery()
+	_, resourceMap, err := discoveryClient.ServerGroupsAndResources()
+	if err != nil {
+		utilruntime.HandleError(fmt.Errorf("unable to get all supported resources from server: %v", err))
+	}
+	if len(resourceMap) == 0 {
+		return nil, fmt.Errorf("unable to get any supported resources from server")
+	}
+
+	allResources := map[schema.GroupVersionResource]bool{}
+	for _, apiResourceList := range resourceMap {
+		version, err := schema.ParseGroupVersion(apiResourceList.GroupVersion)
+		if err != nil {
+			return nil, err
+		}
+		for _, apiResource := range apiResourceList.APIResources {
+			allResources[version.WithResource(apiResource.Name)] = true
+		}
+	}
+
+	return allResources, nil
+}
+
+```
 StartControllers函数: https://github.com/kubernetes/kubernetes/blob/master/cmd/kube-controller-manager/app/controllermanager.go#L231
 - `完成 controller-manager注册并启动`
 ```text
