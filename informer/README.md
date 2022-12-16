@@ -135,7 +135,29 @@ func main() {
 ```
 
 ### 测试结果对比:
--
+
+使用了 apipoox 进行访问测试:
+
+测试路径: http://127.0.0.1:8080/pods
+
+循环次数: 800
+
+线程数: 3
+
+
+- `1. 使用了 informer:`
+
+    ![img](picture/informer.png)
+- `2. 未使用 informer:`
+
+  ![img](picture/no-informer.png)
+
+### 结论:
+```text
+使用与不使用 informer ，平均接口请求耗时相差巨大 (这个相差量会随着数据量的变化越来越大), 我们在开发相关容器平台时需要加入 informer 机制，减轻
+apiserver 与 etcd 压力。
+```
+
 
 
 
