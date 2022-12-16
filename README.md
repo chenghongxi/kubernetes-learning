@@ -20,3 +20,7 @@
 
 - [controller-manager](controller-manager/README.md)
 
+## kubernet Informer
+
+- [Informer](informer/README.md)
+
