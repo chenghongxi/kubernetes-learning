@@ -60,6 +60,7 @@ https://github.com/ot-container-kit/redis-operator
 ```shell
 3. kubectl apply -f https://raw.githubusercontent.com/chenghongxi/kubernetes-learning/master/olm/redis-operators/yml/create-redis-cluster.yaml
 ```
+![img](picture/create-redis-cluster.png)
 ![img](picture/create-redis-cluster1.png)
 
 

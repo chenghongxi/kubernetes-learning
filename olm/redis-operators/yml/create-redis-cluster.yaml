@@ -1,153 +1,3 @@
----
-kind: StorageClass
-apiVersion: storage.k8s.io/v1
-metadata:
-  name: redis-storage
-provisioner: kubernetes.io/no-provisioner
-volumeBindingMode: WaitForFirstConsumer
----
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: redis-pv
-spec:
-  capacity:
-    storage: 6Gi
-  volumeMode: Filesystem
-  accessModes:
-    - ReadWriteOnce
-  persistentVolumeReclaimPolicy: Delete
-  storageClassName: redis-storage
-  local:
-    path: /redis-operators
-  nodeAffinity:
-    required:
-      nodeSelectorTerms:
-        - matchExpressions:
-            - key: kubernetes.io/hostname
-              operator: In
-              values:
-                - pixiu01 # 这里根据官网例子，要设置亲和性，改成节点名
----
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: redis-pv1
-spec:
-  capacity:
-    storage: 6Gi
-  volumeMode: Filesystem
-  accessModes:
-    - ReadWriteOnce
-  persistentVolumeReclaimPolicy: Delete
-  storageClassName: redis-storage
-  local:
-    path: /redis-operators1
-  nodeAffinity:
-    required:
-      nodeSelectorTerms:
-        - matchExpressions:
-            - key: kubernetes.io/hostname
-              operator: In
-              values:
-                - pixiu01 # 这里根据官网例子，要设置亲和性，改成节点名
----
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: redis-pv2
-spec:
-  capacity:
-    storage: 6Gi
-  volumeMode: Filesystem
-  accessModes:
-    - ReadWriteOnce
-  persistentVolumeReclaimPolicy: Delete
-  storageClassName: redis-storage
-  local:
-    path: /redis-operators2
-  nodeAffinity:
-    required:
-      nodeSelectorTerms:
-        - matchExpressions:
-            - key: kubernetes.io/hostname
-              operator: In
-              values:
-                - pixiu01 # 这里根据官网例子，要设置亲和性，改成节点名
-
-
----
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: redis-pv-follower
-spec:
-  capacity:
-    storage: 6Gi
-  volumeMode: Filesystem
-  accessModes:
-    - ReadWriteOnce
-  persistentVolumeReclaimPolicy: Delete
-  storageClassName: redis-storage
-  local:
-    path: /redis-operators-follow
-  nodeAffinity:
-    required:
-      nodeSelectorTerms:
-        - matchExpressions:
-            - key: kubernetes.io/hostname
-              operator: In
-              values:
-                - pixiu01 # 这里根据官网例子，要设置亲和性，改成节点名
----
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: redis-pv-follower1
-spec:
-  capacity:
-    storage: 6Gi
-  volumeMode: Filesystem
-  accessModes:
-    - ReadWriteOnce
-  persistentVolumeReclaimPolicy: Delete
-  storageClassName: redis-storage
-  local:
-    path: /redis-operators-follow1
-  nodeAffinity:
-    required:
-      nodeSelectorTerms:
-        - matchExpressions:
-            - key: kubernetes.io/hostname
-              operator: In
-              values:
-                - pixiu01 # 这里根据官网例子，要设置亲和性，改成节点名
----
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: redis-pv-follower2
-spec:
-  capacity:
-    storage: 6Gi
-  volumeMode: Filesystem
-  accessModes:
-    - ReadWriteOnce
-  persistentVolumeReclaimPolicy: Delete
-  storageClassName: redis-storage
-  local:
-    path: /redis-operators-follow2
-  nodeAffinity:
-    required:
-      nodeSelectorTerms:
-        - matchExpressions:
-            - key: kubernetes.io/hostname
-              operator: In
-              values:
-                - pixiu01 # 这里根据官网例子，要设置亲和性，改成节点名
-
-
----
 apiVersion: redis.redis.opstreelabs.in/v1beta1
 kind: RedisCluster
 metadata:
@@ -167,11 +17,13 @@ spec:
     image: 'quay.io/opstree/redis-exporter:v1.44.0'
     imagePullPolicy: IfNotPresent
   storage:
+    # volumeClaimTemplate 自动创建 pvc
     volumeClaimTemplate:
       spec:
         accessModes:
           - ReadWriteOnce
-        storageClassName: redis-storage
+        # storageClassName 自动创建 pv
+        storageClassName: managed-nfs-storage
         resources:
           requests:
             storage: 1Gi
