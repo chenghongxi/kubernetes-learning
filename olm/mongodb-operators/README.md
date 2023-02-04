@@ -45,7 +45,7 @@ https://ot-mongodb-operator.netlify.app/
 ```
 ![img](picture/validation.png)
 ```shell
-1. kubectl exec -it mongodb-standalone-0 -- /bin/bash
+1. kubectl exec -it mongodb-cluster-0  -- /bin/bash
 2. mongo
 3. use pixiuDB
 ```
