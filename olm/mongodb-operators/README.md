@@ -32,7 +32,8 @@ https://ot-mongodb-operator.netlify.app/
 ```shell
 3. kubectl apply -f https://raw.githubusercontent.com/chenghongxi/kubernetes-learning/master/olm/mongodb-operators/yml/create-mongodb-cluster.yml
 ```
-![img](picture/create-mongodb-cluster.png)
+![img](picture/create-mongo-cluster.png)
+![img](picture/create-mongo-cluster1.png)
 
 
 [create-mongodb-cluster](https://raw.githubusercontent.com/chenghongxi/kubernetes-learning/master/olm/mongodb-operators/yml/create-mongodb-cluster.yml)
