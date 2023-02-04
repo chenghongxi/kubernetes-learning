@@ -57,6 +57,8 @@ https://github.com/CrunchyData/postgres-operator
 3. kubectl apply -f https://raw.githubusercontent.com/chenghongxi/kubernetes-learning/master/olm/postgres-Operators/yml/create-postgres-cluster.yaml
 ```
 ![img](picture/create-postgres-cluster.png)
+![img](picture/create-postgres-cluster1.png)
+
 
 [create-postgres-cluster.yaml](https://raw.githubusercontent.com/chenghongxi/kubernetes-learning/master/olm/postgres-Operators/yml/create-postgres-cluster.yaml)
 
