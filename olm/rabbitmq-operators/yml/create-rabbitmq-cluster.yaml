@@ -4,5 +4,6 @@ metadata:
   name: rabbitmqcluster
 spec:
   persistence:
+    # storageClassName 自动创建 pv
     storageClassName: managed-nfs-storage
     storage: 1Gi
