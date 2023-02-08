@@ -1,6 +1,6 @@
 # Rabbitmq-Operators
 
-部署和管理RabbitMQ集群。为 RabbitMQ 集群的生命周期（创建、升级、正常关闭）设计的自定义控制器和自定义资源定义 ( CRD )
+部署和管理RabbitMQ集群 , 为 RabbitMQ 集群的生命周期（创建、升级、正常关闭）设计的自定义控制器和自定义资源定义 ( CRD )
 
 ## Documentation
 https://www.rabbitmq.com/kubernetes/operator/operator-overview.html
