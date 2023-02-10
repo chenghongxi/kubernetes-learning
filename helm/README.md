@@ -18,5 +18,17 @@ tar -zxvf helm-v3.3.1-linux-amd64.tar.gz
  
 cp linux-amd64/helm /usr/local/bin/
  
-helm version
+[root@VM-32-17-centos bin]# /usr/local/bin/helm version
+version.BuildInfo{Version:"v3.3.1", GitCommit:"249e5215cde0c3fa72e27eb7a30e8d55c9696144", GitTreeState:"clean", GoVersion:"go1.14.7"}
 ```
+
+#### 常用命令:
+```shell
+# 查看配置仓库
+helm repo list
+# 查看 stable 仓库中的所有软件包
+helm search repo stable
+
+```
+
+
