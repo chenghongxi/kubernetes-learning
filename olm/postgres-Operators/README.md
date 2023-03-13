@@ -19,6 +19,7 @@ https://github.com/CrunchyData/postgres-operator
 
 ## Rely On
 - `Kubernetes Cluster Version > 1.19.0`
+- 集群已安装 `OLM` 组件。安装手册参考 [OLM安装](../README.md)
 
 ## Install:
 

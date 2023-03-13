@@ -11,6 +11,7 @@ https://github.com/rabbitmq/cluster-operator
 
 ## Rely on
 - `Kubernetes 1.19.0 cluster`
+- 集群已安装 `OLM` 组件。安装手册参考 [OLM安装](../README.md)
 
 ## Install:
 

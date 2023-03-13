@@ -24,6 +24,7 @@ https://github.com/ot-container-kit/redis-operator
 
 ## Rely on
 - `Kubernetes 1.18.0 cluster`
+- 集群已安装 `OLM` 组件。安装手册参考 [OLM安装](../README.md)
 
 ## Install:
 

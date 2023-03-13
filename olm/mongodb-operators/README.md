@@ -10,6 +10,7 @@ https://ot-mongodb-operator.netlify.app/
 
 ## Rely on
 - `Kubernetes 1.17.0 cluster`
+- 集群已安装 `OLM` 组件。安装手册参考 [OLM安装](../README.md)
  
 ## Install:
 ```text
