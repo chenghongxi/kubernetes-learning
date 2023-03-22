@@ -24,3 +24,7 @@
 
 - [Informer](informer/README.md)
 
+## kubernet Informer
+
+- [Operator](operator/README.md)
+
